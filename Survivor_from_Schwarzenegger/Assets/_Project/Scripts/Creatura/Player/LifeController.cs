@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class LifeController
 {
-    [SerializeField] protected float _hp;
+    [SerializeField] private float _hp;
     // Start is called before the first frame update
 
     //Constructor

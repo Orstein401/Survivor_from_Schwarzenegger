@@ -27,11 +27,12 @@ class Mover
 
     public void NormalizeVector()
     {
-        if (_positionPlayer.magnitude > 1) _positionPlayer = _positionPlayer / _positionPlayer.magnitude;
+        if (_positionPlayer.magnitude > 1) _positionPlayer = _positionPlayer.normalized;
     }
 
     public void Movement(Rigidbody2D rb, float speed)
     {
+        GetPositionPlayer();
         rb.MovePosition(rb.position + _positionPlayer * (speed * Time.deltaTime));
     }
 }
