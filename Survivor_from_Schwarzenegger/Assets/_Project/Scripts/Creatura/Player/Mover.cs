@@ -2,12 +2,12 @@
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
-class Moover
+class Mover
 {
     private Vector2 _positionPlayer;
 
     //Contructor
-    public Moover()
+    public Mover()
     { }
 
     //Getter
@@ -21,9 +21,6 @@ class Moover
     {
         _positionPlayer.x = Input.GetAxis("Horizontal");
         _positionPlayer.y = Input.GetAxis("Vertical");
-
-
-
     }
 
     public void NormalizeVector()
