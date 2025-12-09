@@ -2,17 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemis : MonoBehaviour
+public abstract class Enemis:MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    protected int _hp;
+    protected float _speed;
+
+    public int Hp
     {
-        
+        get { return _hp; }
+        set { _hp = value; }
+    }
+    public float Speed
+    {
+        get { return _speed; }
+        set { _speed = value; }
+    }
+    public virtual void LogicMove()
+    {
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+
+
 }
