@@ -2,32 +2,37 @@
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
-class Moover 
+class Moover
 {
-    private Vector2 _position;
+    private Vector2 _positionPlayer;
 
     //Contructor
     public Moover()
     { }
 
     //Getter
-    public Vector2 GetPosition()
+    public Vector2 GetPositionPlayer()
     {
-        return _position;
+        return _positionPlayer;
     }
 
     //Setter
-    public void SetPosition()
+    public void SetPositionPlayer()
     {
-        _position.x = Input.GetAxis("Horizontal");
-        _position.y = Input.GetAxis("Vertical");
+        _positionPlayer.x = Input.GetAxis("Horizontal");
+        _positionPlayer.y = Input.GetAxis("Vertical");
 
-        if (_position.magnitude > 1) _position = _position / _position.magnitude;
+
 
     }
 
-    public void Moovment( Rigidbody2D rb , float speed)
+    public void NormalizeVector()
     {
-        rb.MovePosition(rb.position + _position * (speed * Time.deltaTime));
+        if (_positionPlayer.magnitude > 1) _positionPlayer = _positionPlayer / _positionPlayer.magnitude;
+    }
+
+    public void Movment(Rigidbody2D rb, float speed)
+    {
+        rb.MovePosition(rb.position + _positionPlayer * (speed * Time.deltaTime));
     }
 }
