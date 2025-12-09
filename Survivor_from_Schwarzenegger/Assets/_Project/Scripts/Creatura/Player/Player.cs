@@ -34,8 +34,8 @@ public class Player : MonoBehaviour
         _position.y = _v;
         if (_position.magnitude > 1)
         {
-            _position.x = _position.x / Mathf.Sqrt(_position.magnitude);
-            _position.y = _position.y / Mathf.Sqrt(_position.magnitude);
+            _position = _position / _position.magnitude;
+
         }
         _rb.MovePosition(_rb.position + _position * (_speed * Time.deltaTime));
     }
