@@ -5,6 +5,8 @@ using UnityEngine;
 class Mover
 {
     private Vector2 _positionPlayer;
+ 
+
 
     //Contructor
     public Mover()
@@ -22,6 +24,7 @@ class Mover
         _positionPlayer.x = Input.GetAxis("Horizontal");
         _positionPlayer.y = Input.GetAxis("Vertical");
     }
+
 
     public void NormalizeVector()
     {
