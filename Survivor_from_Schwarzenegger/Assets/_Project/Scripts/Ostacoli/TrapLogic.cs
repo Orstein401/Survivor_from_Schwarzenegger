@@ -23,7 +23,7 @@ public class TrapLogic : MonoBehaviour
 
     private void Update()
     {
-        if (isActive)
+        if (_isActive)
         {
             Debug.Log("Trappola attiva");
         }
@@ -34,8 +34,8 @@ public class TrapLogic : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
         {
-            isActive = true;
-            entitiesInRange++;
+            _isActive = true;
+            _entitiesInRange++;
         }
     }
 
@@ -44,8 +44,8 @@ public class TrapLogic : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
         {
-            entitiesInRange--;
-            isActive = entitiesInRange <= 0 ? false : true; // Se non escono tutte le entita' dal trigger, lascio la trappola attiva
+            _entitiesInRange--;
+            _isActive = _entitiesInRange <= 0 ? false : true; // Se non escono tutte le entita' dal trigger, lascio la trappola attiva
         }
     }
 
