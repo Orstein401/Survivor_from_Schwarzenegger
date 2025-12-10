@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class LifeController
 {
-    [SerializeField] protected float _hp;
+    [SerializeField] private int _hp;
     // Start is called before the first frame update
 
     //Constructor
@@ -16,14 +16,17 @@ public class LifeController
     public float GetHp() => _hp;
 
     //Setter
-    public void SetHp(float hp)
+    public void SetHp(int hp)
     { _hp = hp; }
 
-    public void TakeDamage(float damage)
+    //Functionality
+    public void TakeDamage(int damage)
     {
         _hp = Mathf.Max(0, _hp - damage);
     }
 
+    public void AddHp(int hp)
+    { _hp += hp; }
     public bool IsAlive()
     {
         if (_hp > 0)

@@ -5,8 +5,6 @@ using UnityEngine;
 class Mover
 {
     private Vector2 _positionPlayer;
- 
-
 
     //Contructor
     public Mover()
@@ -15,6 +13,7 @@ class Mover
     //Getter
     public Vector2 GetPositionPlayer()
     {
+        NormalizeVector();
         return _positionPlayer;
     }
 
@@ -28,11 +27,12 @@ class Mover
 
     public void NormalizeVector()
     {
-        if (_positionPlayer.magnitude > 1) _positionPlayer = _positionPlayer / _positionPlayer.magnitude;
+        if (_positionPlayer.magnitude > 1) _positionPlayer = _positionPlayer.normalized;
     }
 
-    public void Movment(Rigidbody2D rb, float speed)
+    public void Movement(Rigidbody2D rb, float speed)
     {
+        GetPositionPlayer();
         rb.MovePosition(rb.position + _positionPlayer * (speed * Time.deltaTime));
     }
 }
