@@ -10,13 +10,23 @@ public class TrapLogic : MonoBehaviour
     - TESTARE CON PIU' ENEMY NEL TRIGGER E VEDERE CHE SUCCEDE
      */
 
-    [SerializeField] private bool isActive;
-    [SerializeField] private int entitiesInRange;
-    [SerializeField] private int damage;
+    [SerializeField] private bool _isActive;
+    [SerializeField] private int _entitiesInRange;
+    [SerializeField] private int _damage;
+
+    private GameObject player;
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     private void Update()
     {
-        if (isActive) Debug.Log("Trappola attiva");
+        if (isActive)
+        {
+            Debug.Log("Trappola attiva");
+        }
     }
 
     // Rileva se il Player e/o un Enemy finiscono nel raggio d'azione della trappola per attivarla
