@@ -7,25 +7,25 @@ using UnityEngine;
 public struct Stats
 {
 
-    [SerializeField] public int atk;
-    [SerializeField] public int shd;
-    [SerializeField] public int spd;
+    [SerializeField] public int _atk;
+    [SerializeField] public int _shd;
+    [SerializeField] public int _spd;
 
     //Construct
-    public Stats(int atk, int def, int spd )
+    public Stats(int atk, int shd, int spd)
     {
-        this.atk = atk;
-        this.shd = def;
-        this.spd = spd;
+        _atk = atk;
+        _shd = shd;
+        _spd = spd;
     }
 
     //Functionality
     public static Stats Sum(Stats S1, Stats S2)
     {
         Stats S3 = new Stats();
-        S3.atk = S1.atk + S2.atk;
-        S3.shd = S1.shd + S2.shd;
-        S3.spd = S1.spd + S2.spd;
+        S3._atk = S1._atk + S2._atk;
+        S3._shd = S1._shd + S2._shd;
+        S3._spd = S1._spd + S2._spd;
         return S3;
     }
 

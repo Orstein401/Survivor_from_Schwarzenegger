@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class BulletHero : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] int _damage;
+    [SerializeField] string _name;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
