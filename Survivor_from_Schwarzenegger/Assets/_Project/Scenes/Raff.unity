@@ -329,7 +329,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a186a79a529e035469791dda178cad53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _hp: 0
+  BaseStats:
+    atk: 0
+    shd: 0
+    spd: 5
+  Weapon:
+  - _name: 
+    _bonusStats:
+      atk: 0
+      shd: 0
+      spd: 0
+    _rateOfFire: 0
+    _lifespan: 0
 --- !u!4 &1893432582
 Transform:
   m_ObjectHideFlags: 0
