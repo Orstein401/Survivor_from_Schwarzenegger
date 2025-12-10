@@ -36,12 +36,12 @@ public class Player : MonoBehaviour
         _mover.Movement(_rb, _speed);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy") ||
-            collision.gameObject.CompareTag("Enemy Bullet"))
-        {
-            //
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Enemy") ||
+    //        collision.gameObject.CompareTag("Enemy Bullet"))
+    //    {
+            
+    //    }
+    //}
 }
