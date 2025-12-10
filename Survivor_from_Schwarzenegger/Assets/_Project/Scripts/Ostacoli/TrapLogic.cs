@@ -27,11 +27,7 @@ public class TrapLogic : MonoBehaviour
 
     private void Update()
     {
-<<<<<<< Updated upstream
-        if (isActive)
-=======
         if (_isActive && (Time.time - _lastTimeDamaged >= _damageRate))
->>>>>>> Stashed changes
         {
             foreach (GameObject entity in _entitiesInRange) DamageEntity(entity);
         }
@@ -42,12 +38,7 @@ public class TrapLogic : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
         {
-<<<<<<< Updated upstream
-            isActive = true;
-            entitiesInRange++;
-=======
             Invoke("ActivateTrap", 2f);
->>>>>>> Stashed changes
         }
     }
 
@@ -56,15 +47,10 @@ public class TrapLogic : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
         {
-<<<<<<< Updated upstream
-            entitiesInRange--;
-            isActive = entitiesInRange <= 0 ? false : true; // Se non escono tutte le entita' dal trigger, lascio la trappola attiva
-=======
             _entitiesInRange.Remove(collision.gameObject);
             _entitiesInRangeCount--;
             _isActive = _entitiesInRangeCount <= 0 ? false : true; // Se non escono tutte le entita' dal trigger, lascio la trappola attiva
             if (!_isActive) _anim.SetIsActiveParam(_isActive);
->>>>>>> Stashed changes
         }
     }
 
