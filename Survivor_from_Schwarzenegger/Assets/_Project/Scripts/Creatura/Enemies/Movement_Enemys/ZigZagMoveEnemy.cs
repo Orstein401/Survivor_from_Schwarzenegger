@@ -31,9 +31,4 @@ public class ZigZagMoveEnemy : MoveEnemy
         }
 
     }
-
-    private void Update()
-    {
-        LogicMove();
-    }
 }

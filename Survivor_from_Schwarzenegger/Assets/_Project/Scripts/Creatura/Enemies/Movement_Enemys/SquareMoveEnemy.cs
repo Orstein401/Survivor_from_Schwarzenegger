@@ -35,19 +35,5 @@ public class SquareMoveEnemy : MoveEnemy
                 CurrentPosition = 0;
             }
         }
-
-
-    }
-    private void Update()
-    {
-        if (ThereIsPLayer)
-        {
-            base.LogicMove();
-        }
-        else
-        {
-            LogicMove();
-        }
-
     }
 }

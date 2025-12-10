@@ -28,9 +28,4 @@ public class RightLeftMove : MoveEnemy
         }
 
     }
-
-    private void Update()
-    {
-        LogicMove();
-    }
 }

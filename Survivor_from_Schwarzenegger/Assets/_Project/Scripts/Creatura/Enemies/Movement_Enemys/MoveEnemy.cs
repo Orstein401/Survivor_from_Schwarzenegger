@@ -2,12 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveEnemy : MonoBehaviour
+public abstract class MoveEnemy : MonoBehaviour
 {
-    [SerializeField] protected float _speed;
-    [SerializeField] protected Player _player; //fatta Serialize per evitare di cercare ogni volta con il  FindAnyObjectByType<Player>();
+    protected float _speed;
+    protected Player _player; 
     protected Vector2 StartPosition; //mi da la posizione iniziale dove è posizionato L'enemy
     [SerializeField] protected bool ThereIsPLayer;
+
+    public Player Player
+    {
+        get { return _player; }
+        set { _player = value; }
+    }
+    public bool IsPlayer
+    {
+        get { return ThereIsPLayer; }
+        set { ThereIsPLayer = value; }
+    }
 
     public float Speed
     {
@@ -24,9 +35,10 @@ public class MoveEnemy : MonoBehaviour
         }
 
     }
-    public virtual void LogicMove()
+    public void ChasePlayer()
     {
-        
         transform.position = Vector2.MoveTowards(transform.position, _player.transform.position, Speed * Time.deltaTime);
     }
+    public abstract void LogicMove();
 }
+
