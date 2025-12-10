@@ -15,6 +15,7 @@ public class TrapLogic : MonoBehaviour
     [SerializeField] private int _entitiesInRangeCount;
     [SerializeField] private int _damage = 20;
     [SerializeField] private float _damageRate = 1f;
+    [SerializeField] private float _trapDelay = 1f;
 
     private SpikeAnimation _anim;
     private float _lastTimeDamaged;
@@ -29,7 +30,11 @@ public class TrapLogic : MonoBehaviour
     {
         if (_isActive && (Time.time - _lastTimeDamaged >= _damageRate))
         {
-            foreach (GameObject entity in _entitiesInRange) DamageEntity(entity);
+            foreach (GameObject entity in _entitiesInRange)
+            {
+                DamageEntity(entity);
+                Debug.Log("Nemico danneggiato");
+            }
         }
     }
 
@@ -38,7 +43,11 @@ public class TrapLogic : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
         {
-            Invoke("ActivateTrap", 2f);
+            Invoke("StartAnimation", _trapDelay);
+            _entitiesInRange.Add(collision.gameObject);
+            _entitiesInRangeCount++;
+            _isActive = true;
+            _lastTimeDamaged = Time.time;
         }
     }
 
@@ -50,24 +59,24 @@ public class TrapLogic : MonoBehaviour
             _entitiesInRange.Remove(collision.gameObject);
             _entitiesInRangeCount--;
             _isActive = _entitiesInRangeCount <= 0 ? false : true; // Se non escono tutte le entita' dal trigger, lascio la trappola attiva
-            if (!_isActive) _anim.SetIsActiveParam(_isActive);
+            if (!_isActive) Invoke("StopAnimation", _trapDelay);
         }
     }
 
-    private void ActivateTrap(Collider2D collision)
+    private void StartAnimation()
     {
-        _isActive = true;
-        _entitiesInRangeCount++;
-        _anim.SetIsActiveParam(_isActive);
-        _entitiesInRange.Add(collision.gameObject);
-        DamageEntity(collision.gameObject);
-        _lastTimeDamaged = Time.time;
+        _anim.SetIsActiveParam(true);
+    }
+
+    private void StopAnimation()
+    {
+        _anim.SetIsActiveParam(false);
     }
 
     private void DamageEntity(GameObject entity)
     {
         LifeController lifeController = entity.GetComponent<LifeController>();
         lifeController.TakeDamage(_damage);
+        _lastTimeDamaged = Time.time;
     }
-
 }
