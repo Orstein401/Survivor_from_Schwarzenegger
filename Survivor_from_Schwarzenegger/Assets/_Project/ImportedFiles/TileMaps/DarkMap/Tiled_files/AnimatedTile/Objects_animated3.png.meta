@@ -607,7 +607,7 @@ TextureImporter:
         x: 30
         y: 102
         width: 58
-        height: 93
+        height: 99
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -622,34 +622,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Objects_animated3_25
-      rect:
-        serializedVersion: 2
-        x: 167
-        y: 187
-        width: 7
-        height: 11
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6e7c3b9468f895040a21a6d180399937
-      internalID: -892189824
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Objects_animated3_26
       rect:
         serializedVersion: 2
         x: 254
         y: 102
         width: 58
-        height: 90
+        height: 101
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -664,55 +643,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Objects_animated3_27
-      rect:
-        serializedVersion: 2
-        x: 278
-        y: 188
-        width: 8
-        height: 13
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ed0dbce6ef74e9249a1fa6e9c1fb052a
-      internalID: 862850465
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Objects_animated3_28
-      rect:
-        serializedVersion: 2
-        x: 391
-        y: 186
-        width: 8
-        height: 17
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 503de9f44907dce4bb8242f66b62b27a
-      internalID: 438069204
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Objects_animated3_29
       rect:
         serializedVersion: 2
         x: 478
         y: 102
         width: 58
-        height: 89
+        height: 98
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -722,27 +659,6 @@ TextureImporter:
       bones: []
       spriteID: 8f33c4a52cf970c4fb1a1de5a3828857
       internalID: 426330099
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Objects_animated3_30
-      rect:
-        serializedVersion: 2
-        x: 505
-        y: 190
-        width: 7
-        height: 9
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9662f8a40ed74cb47af3df38b570b273
-      internalID: -396002363
       vertices: []
       indices: 
       edges: []
@@ -775,7 +691,7 @@ TextureImporter:
         x: 142
         y: 102
         width: 58
-        height: 87
+        height: 99
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -796,7 +712,7 @@ TextureImporter:
         x: 366
         y: 102
         width: 58
-        height: 87
+        height: 102
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

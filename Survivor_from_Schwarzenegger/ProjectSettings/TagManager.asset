@@ -68,12 +68,21 @@ TagManager:
   - name: HurtObstacle
     uniqueID: 200156681
     locked: 0
+  - name: DestroyBackTrees
+    uniqueID: 1962735019
+    locked: 0
   - name: Unit
     uniqueID: 654837899
+    locked: 0
+  - name: FrontTree1
+    uniqueID: 2725396521
+    locked: 0
+  - name: FrontTree2
+    uniqueID: 612827949
     locked: 0
   - name: Overlay
     uniqueID: 3939719511
     locked: 0
-  - name: New Layer 12
-    uniqueID: 612827949
+  - name: Fog
+    uniqueID: 3723909819
     locked: 0
