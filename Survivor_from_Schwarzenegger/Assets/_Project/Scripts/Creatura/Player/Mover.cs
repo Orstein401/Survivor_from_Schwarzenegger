@@ -4,7 +4,7 @@ using UnityEngine;
 
 class Mover
 {
-    private Vector2 _positionPlayer;
+    public Vector2 _positionPlayer;
 
     //Contructor
     public Mover()

@@ -1,64 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float _speed = 5;
-    [SerializeField] private float _walkingSpeed = 2;
-    [SerializeField] private Player player; //fatta Serialize per evitare di cercare ogni volta con il  FindAnyObjectByType<Player>();
-    [SerializeField] private float _range;
+    [SerializeField] protected Stats stats;
+    [SerializeField] protected int _hp;
+    [SerializeField] protected float _walkingSpeed = 2;
+    [SerializeField] protected Player player; //fatta Serialize per evitare di cercare ogni volta con il  FindAnyObjectByType<Player>()
+    [SerializeField] protected float _range;
 
-    MoveEnemy typeMove;
-    TriggerRange IsTrigger;
+    protected MoveEnemy typeMove;
+    protected TriggerRange IsTrigger;
+    public LifeController lifeEnemy;
+    [SerializeField] DropAmmo bulletDrop;
 
-    private void Awake()
+
+    protected virtual void Awake()
     {
         typeMove = GetComponent<MoveEnemy>();
+        lifeEnemy = GetComponent<LifeController>();
         IsTrigger = GetComponent<TriggerRange>();
+        if (lifeEnemy == null)
+        {
+            lifeEnemy = gameObject.AddComponent<LifeController>();
+        }
+        if (typeMove == null)
+        {
+            typeMove = gameObject.AddComponent<MoveEnemy>();
+        }
+        if (IsTrigger == null)
+        {
+            IsTrigger = gameObject.AddComponent<TriggerRange>();
+        }
         if (player == null)
         {
             player = FindAnyObjectByType<Player>(); // è sempre presente in caso non dovesse essere messo niente nel serializeFIeld
         }
     }
 
-    private void Start()
+    protected virtual void Start()
     {
-        if (typeMove != null)
-        {
-            typeMove.Player = player;
-        }
-        else
-        {
-            Debug.Log("ce un problema in type");
-        }
-        if (IsTrigger)
-        {
-            IsTrigger.Player = player;
-            IsTrigger.range = _range;
-        }
-        else
-        {
-            Debug.Log("ce un problema in Itrigger");
-        }
+        typeMove.Player = player;
+        IsTrigger.Player = player;
+        IsTrigger.range = _range;
 
-        //typeMove.Player = player;
-        //IsTrigger.Player = player;
-        //IsTrigger.range = _range;
+        lifeEnemy.SetHp(_hp);
     }
-    private void Update()
+
+    public void Drop()
     {
-        if (IsTrigger.IsNearPLayer())
-        {
-            typeMove.Speed = _speed;
-            typeMove.ChasePlayer();
-        }
-        else
-        {
-            typeMove.Speed = _walkingSpeed;
-            typeMove.LogicMove();
-        }
-
+       DropAmmo bullet = Instantiate(bulletDrop);
+        bullet.transform.position = gameObject.transform.position;
     }
+
 }

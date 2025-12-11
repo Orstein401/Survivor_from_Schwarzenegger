@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - Ammo
+  - Enemy Bullet
   layers:
   - Default
   - TransparentFX
@@ -11,10 +14,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - BulletEnemy
+  - Player
+  - BulletPLayer
   - 
   - 
   - 
@@ -41,39 +44,48 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Grass
-    uniqueID: 4111810265
+  - name: GreenGround
+    uniqueID: 1170822847
     locked: 0
-  - name: EsteticGrass
-    uniqueID: 699268793
+  - name: ObjectGreen
+    uniqueID: 1877738979
     locked: 0
-  - name: Soil
-    uniqueID: 2440421469
+  - name: SoilGround
+    uniqueID: 2864389121
     locked: 0
-  - name: EsteticSoil
-    uniqueID: 2388165973
+  - name: ObjectSoil
+    uniqueID: 4122682115
     locked: 0
   - name: Road
-    uniqueID: 3734422491
+    uniqueID: 612389373
     locked: 0
-  - name: Piastrelle
-    uniqueID: 1965431193
+  - name: Borders
+    uniqueID: 4260111863
+    locked: 0
+  - name: Piastre
+    uniqueID: 2292892093
     locked: 0
   - name: ObjectBehind
-    uniqueID: 2822202749
+    uniqueID: 147250059
     locked: 0
-  - name: Object
-    uniqueID: 2102336837
+  - name: Objects
+    uniqueID: 2689235541
     locked: 0
-  - name: HurtObstacle
-    uniqueID: 200156681
+  - name: BackTreeToDestroy
+    uniqueID: 169437511
     locked: 0
   - name: Unit
-    uniqueID: 654837899
+    uniqueID: 927842261
+    locked: 0
+  - name: FrontTreeToDestroy1
+    uniqueID: 3030947603
+    locked: 0
+  - name: FrontTreeToDestroy2
+    uniqueID: 2508022219
     locked: 0
   - name: Overlay
-    uniqueID: 3939719511
+    uniqueID: 2148421979
     locked: 0
-  - name: New Layer 12
-    uniqueID: 612827949
+  - name: Fog
+    uniqueID: 3477181367
     locked: 0
