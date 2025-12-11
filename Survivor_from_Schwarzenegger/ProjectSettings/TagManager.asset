@@ -44,3 +44,39 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Grass
+    uniqueID: 4111810265
+    locked: 0
+  - name: EsteticGrass
+    uniqueID: 699268793
+    locked: 0
+  - name: Soil
+    uniqueID: 2440421469
+    locked: 0
+  - name: EsteticSoil
+    uniqueID: 2388165973
+    locked: 0
+  - name: Road
+    uniqueID: 3734422491
+    locked: 0
+  - name: Piastrelle
+    uniqueID: 1965431193
+    locked: 0
+  - name: ObjectBehind
+    uniqueID: 2822202749
+    locked: 0
+  - name: Object
+    uniqueID: 2102336837
+    locked: 0
+  - name: HurtObstacle
+    uniqueID: 200156681
+    locked: 0
+  - name: Unit
+    uniqueID: 654837899
+    locked: 0
+  - name: Overlay
+    uniqueID: 3939719511
+    locked: 0
+  - name: New Layer 12
+    uniqueID: 612827949
+    locked: 0
