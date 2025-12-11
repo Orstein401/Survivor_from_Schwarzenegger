@@ -12,7 +12,7 @@ public class BulletHero : MonoBehaviour
     private float bulletForce = 3;
 
 
-    //Nel fixed update calcolo il movimento del bullet ( movimento + velocit‡)
+    //Nel fixed update calcolo il movimento del bullet ( movimento + velocit√†)
     private void Update()
     {
         transform.position = transform.position + _newDirection * _speed * Time.deltaTime;
@@ -40,11 +40,11 @@ public class BulletHero : MonoBehaviour
             {
                 enemy.Drop();
                 Destroy(collision.gameObject, 2f);
-                Debug.Log("Ë morto");
+                Debug.Log("√® morto");
             }
             else
             {
-                Debug.Log(enemy.lifeEnemy.GetHp()+"se Ë ancora vivo");
+                Debug.Log(enemy.lifeEnemy.GetHp()+"se √® ancora vivo");
             }
                 Destroy(gameObject);
         }
