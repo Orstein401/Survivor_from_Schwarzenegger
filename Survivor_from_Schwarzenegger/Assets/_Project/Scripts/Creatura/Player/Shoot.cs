@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Shoot : MonoBehaviour
 {
@@ -16,16 +18,33 @@ public class Shoot : MonoBehaviour
 
     }
 
-    public void Shooter(List<Weapon> weapon, BulletHero[] bullet)
+    public void Shooter(List<Weapon> weapon, BulletHero[] bullet, GameObject player)
     {
-        string bulletName;
+        Debug.Log(weapon.Count);
         for (int i = 0; i < weapon.Count; i++)
         {
+            for (int j = 0; j < bullet.Length; j++)
+            {
+                if (weapon[i].GetNameAmmo() == (bullet[j].GetNameAmmo()))
+                {
+                    Debug.Log("Spara");
+                    Spawn(player, bullet[i]);
+                }
+            }
             //bulletName = weapon[i].GetNameBulletHero();
             //BulletHero bulletHero = gameObject.GetComponent<bulletName>();
             //BulletHero bulletHeroPrefab = Instantiate(bulletHero);
 
         }
+
+    }
+
+    public void Spawn(GameObject player, BulletHero bullet)
+    {
+
+        BulletHero bulletHeroPrefab = Instantiate(bullet);
+        bulletHeroPrefab.MovementBullet(gameObject.transform);
+        Destroy(bulletHeroPrefab.gameObject, 2f);
 
     }
 }
