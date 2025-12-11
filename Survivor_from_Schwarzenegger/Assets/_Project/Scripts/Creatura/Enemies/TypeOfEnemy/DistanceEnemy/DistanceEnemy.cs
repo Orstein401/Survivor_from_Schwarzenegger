@@ -14,9 +14,9 @@ public class DistanceEnemy : Enemy
     {
         base.Awake();
         Attack = GetComponent<DistanceAttack>();
-        if(Attack == null)
+        if (Attack == null)
         {
-            Attack=gameObject.AddComponent<DistanceAttack>();
+            Attack = gameObject.AddComponent<DistanceAttack>();
         }
     }
     protected override void Start()

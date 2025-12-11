@@ -12,7 +12,7 @@ public abstract class MoveEnemy : MonoBehaviour
     [SerializeField] protected bool ThereIsPLayer;
 
     //variabili per gestire la spinta subita dal proiettiele nemico(Player)
-    protected bool isKnocked;
+    protected bool isKnocked=false;
     public float knockSpeed;
     public Vector2 knockTarget;
     public Player Player
