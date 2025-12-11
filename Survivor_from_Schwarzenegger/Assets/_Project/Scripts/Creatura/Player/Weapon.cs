@@ -23,10 +23,11 @@ public class Weapon
     [SerializeField] private float _rateOfFire;
     [SerializeField] private float _lifespan;
     private static List<Weapon> _listWeapons = new List<Weapon>();
+    private float _residueTime = 0f;
     //Constructor
     public Weapon(Ammo nameAmmo, Stats bonusStats, float rateOfFire, float lifespan)
     {
-     
+
         _nameAmmo = nameAmmo;
         _bonusStats = bonusStats;
         _rateOfFire = rateOfFire;
@@ -48,7 +49,7 @@ public class Weapon
     public float GetLifeSpan()
     { return _lifespan; }
 
-    public List<Weapon> GetListWeapon()
+    public static List<Weapon> GetListWeapon()
     { return _listWeapons; }
     //Setter
     public void SetNameAmmo(Ammo nameAmmo)
@@ -68,10 +69,17 @@ public class Weapon
     //Funzionalità acquisizione arma
     public static void SetWeapon(Weapon weapon)
     {
+        if (_listWeapons.Count == 0)
+        {
+            _listWeapons.Add(weapon);
+            return;
+        }
+
+
         bool foundWeapon = false;
         for (int i = 0; i < _listWeapons.Count; i++)
         {
-            if (_listWeapons[i]._nameAmmo.Equals(weapon._nameAmmo))
+            if (_listWeapons[i]._nameAmmo == weapon._nameAmmo)
             {
                 foundWeapon = true;
                 return;
@@ -84,9 +92,23 @@ public class Weapon
         }
         else
         {
+            Debug.Log("è stata aggiunta una nuova arma");
             _listWeapons.Add(weapon);
+            Debug.Log("ARMI ATTUALI: " + _listWeapons.Count);
         }
 
+
+    }
+
+    public bool CanIShoot()
+    {
+        if (Time.time - _residueTime < _rateOfFire) return false;
+        else
+
+        {
+            _residueTime = Time.time;
+            return true;
+        }
     }
 
 }

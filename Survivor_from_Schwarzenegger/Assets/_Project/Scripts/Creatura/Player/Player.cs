@@ -10,7 +10,8 @@ public class Player : MonoBehaviour
     [SerializeField] private int _hp;
     [SerializeField] private Stats _baseStats;
     [SerializeField] BulletHero[] _bulletHero;
-    [SerializeField] private List<Weapon> _listWeapon;
+    [SerializeField] private List<Weapon> _firstWeapon;
+    private List<Weapon> _listWeapon;
     Mover _mover = new Mover();
     Shoot _shoot = new Shoot();
     Rigidbody2D _rb;
@@ -22,8 +23,8 @@ public class Player : MonoBehaviour
         //Setting info principali del Player
         _rb = GetComponent<Rigidbody2D>();
         LifeHero.SetHp(_hp);
-
-
+        Weapon.SetWeapon(_firstWeapon[0]);
+        _listWeapon = Weapon.GetListWeapon();
     }
     void Start()
     {
@@ -32,7 +33,8 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
+    {
+        _listWeapon = Weapon.GetListWeapon();
         _mover.SetPositionPlayer();
         _shoot.Shooter(_listWeapon, _bulletHero, gameObject);
     }
@@ -51,11 +53,6 @@ public class Player : MonoBehaviour
             // Gestone take damege da definire.
         }
 
-        if (collision.gameObject.CompareTag("Ammo"))
-        {
-            Weapon ammo = gameObject.GetComponent<Weapon>();
-            Weapon.SetWeapon(ammo);
 
-        }
     }
 }

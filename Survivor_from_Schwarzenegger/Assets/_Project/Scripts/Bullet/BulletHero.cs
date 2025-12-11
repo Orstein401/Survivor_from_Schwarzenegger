@@ -7,20 +7,19 @@ public class BulletHero : MonoBehaviour
 {
     [SerializeField] private int _damage;
     [SerializeField] private Ammo _nameAmmo = Ammo.Spada;
+    [SerializeField] private float _speed;
     private Vector3 _newDirection;
 
     //Nel fixed update calcolo il movimento del bullet ( movimento + velocità)
     private void Update()
     {
-        transform.position = transform.position + _newDirection * 2f * Time.deltaTime;
+        transform.position = transform.position + _newDirection * _speed * Time.deltaTime;
     }
 
 
-    public void MovementBullet(Transform bulletHeroPrefab)
+    public void MovementBullet(Transform dirPlayer)
     {
-        _newDirection = bulletHeroPrefab.position;
-      
-
+        _newDirection = dirPlayer.position.normalized; //indico la direzione che deve prendere il mio bullet
     }
 
     public BulletHero() { }

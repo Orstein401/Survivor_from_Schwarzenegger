@@ -20,15 +20,23 @@ public class Shoot : MonoBehaviour
 
     public void Shooter(List<Weapon> weapon, BulletHero[] bullet, GameObject player)
     {
-        Debug.Log(weapon.Count);
+        Debug.Log("Numero di Armi" + weapon.Count);
         for (int i = 0; i < weapon.Count; i++)
         {
+
             for (int j = 0; j < bullet.Length; j++)
             {
                 if (weapon[i].GetNameAmmo() == (bullet[j].GetNameAmmo()))
                 {
-                    Debug.Log("Spara");
-                    Spawn(player, bullet[i]);
+                    Debug.Log("Nome Arma " + weapon[i].GetNameAmmo());
+                    Debug.Log("Nome Bullet Arma " + bullet[j].GetNameAmmo());
+
+                    if (weapon[i].CanIShoot() == true)
+                    {
+                        Debug.Log("Spara" + weapon[i].GetNameAmmo());
+                        Spawn(player, bullet[j], weapon[i].GetLifeSpan());
+
+                    }
                 }
             }
             //bulletName = weapon[i].GetNameBulletHero();
@@ -39,12 +47,13 @@ public class Shoot : MonoBehaviour
 
     }
 
-    public void Spawn(GameObject player, BulletHero bullet)
+    public void Spawn(GameObject player, BulletHero bullet, float lifespan)
     {
-
-        BulletHero bulletHeroPrefab = Instantiate(bullet);
-        bulletHeroPrefab.MovementBullet(gameObject.transform);
-        Destroy(bulletHeroPrefab.gameObject, 2f);
+      
+        BulletHero bulletHeroPrefab = Instantiate(bullet);   //Istanzio il prefab quindi creo una copia del bullet nella scena
+        bulletHeroPrefab.transform.position = player.transform.position; //La posizione Iniziale dell'oggetto è il punto in cui è presente il player
+        bulletHeroPrefab.MovementBullet(player.transform); //Richiamo la funzione movimento per spostarlo
+        Destroy(bulletHeroPrefab.gameObject, lifespan);
 
     }
 }
