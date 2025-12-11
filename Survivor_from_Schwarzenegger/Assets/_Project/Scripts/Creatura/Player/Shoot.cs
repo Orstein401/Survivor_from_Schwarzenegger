@@ -18,7 +18,7 @@ public class Shoot : MonoBehaviour
 
     }
 
-    public void Shooter(List<Weapon> weapon, BulletHero[] bullet, GameObject player)
+    public void Shooter(List<Weapon> weapon, BulletHero[] bullet, GameObject player, Vector2 directionPlayer)
     {
         Debug.Log("Numero di Armi" + weapon.Count);
         for (int i = 0; i < weapon.Count; i++)
@@ -34,7 +34,7 @@ public class Shoot : MonoBehaviour
                     if (weapon[i].CanIShoot() == true)
                     {
                         Debug.Log("Spara" + weapon[i].GetNameAmmo());
-                        Spawn(player, bullet[j], weapon[i].GetLifeSpan());
+                        Spawn(player, bullet[j], weapon[i].GetLifeSpan(), directionPlayer);
 
                     }
                 }
@@ -47,12 +47,15 @@ public class Shoot : MonoBehaviour
 
     }
 
-    public void Spawn(GameObject player, BulletHero bullet, float lifespan)
+    public void Spawn(GameObject player, BulletHero bullet, float lifespan, Vector2 directionPlayer)
     {
-      
+
         BulletHero bulletHeroPrefab = Instantiate(bullet);   //Istanzio il prefab quindi creo una copia del bullet nella scena
-        bulletHeroPrefab.transform.position = player.transform.position; //La posizione Iniziale dell'oggetto è il punto in cui è presente il player
-        bulletHeroPrefab.MovementBullet(player.transform); //Richiamo la funzione movimento per spostarlo
+        Vector3 newPositionBulletStart = new Vector3(player.transform.position.x + directionPlayer.x , 
+                                                     player.transform.position.y + directionPlayer.y,
+                                                     0);
+        bulletHeroPrefab.transform.position = newPositionBulletStart; //La posizione Iniziale dell'oggetto è il punto in cui è presente il player
+        bulletHeroPrefab.MovementBullet(directionPlayer); //Richiamo la funzione movimento per spostarlo
         Destroy(bulletHeroPrefab.gameObject, lifespan);
 
     }

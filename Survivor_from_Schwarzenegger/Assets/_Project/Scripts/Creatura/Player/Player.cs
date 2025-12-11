@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     {
         _listWeapon = Weapon.GetListWeapon();
         _mover.SetPositionPlayer();
-        _shoot.Shooter(_listWeapon, _bulletHero, gameObject);
+        _shoot.Shooter(_listWeapon, _bulletHero, gameObject, _mover.GetPositionPlayer());
     }
 
     private void FixedUpdate()
