@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4425555451298767424}
   - component: {fileID: 8897948706676364103}
+  - component: {fileID: 2904415998947064406}
   - component: {fileID: 8920691063321866905}
   - component: {fileID: 4141867283584528218}
   - component: {fileID: 1232655799848665141}
@@ -87,6 +88,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2904415998947064406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5003441433981275417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95cdde1b210ae0044b79a5a0bb130bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 20
+  _damageRate: 1
+  _knockbackForce: 1
 --- !u!95 &8920691063321866905
 Animator:
   serializedVersion: 5
@@ -140,9 +156,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.5}
   serializedVersion: 2
-  m_Radius: 1.2
+  m_Radius: 1.1
 --- !u!61 &1232655799848665141
 BoxCollider2D:
   m_ObjectHideFlags: 0

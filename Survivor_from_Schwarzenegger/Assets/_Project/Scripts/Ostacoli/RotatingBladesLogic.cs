@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrapLogic : MonoBehaviour
+public class RotatingBladesLogic : MonoBehaviour
 {
     /*
     TO DO:
@@ -13,23 +13,19 @@ public class TrapLogic : MonoBehaviour
 
     [SerializeField] private int _damage = 20;
     [SerializeField] private float _damageRate = 1f;
-    [SerializeField] private float _trapDelay = 1f;
     [SerializeField] private float _knockbackForce = 1f;
 
-    private SpikeAnimation _anim;
-    private bool _isActive;
-    private int _entitiesInRangeCount;
     private float _lastTimeDamaged;
     private List<GameObject> _entitiesInRange = new List<GameObject>();
 
-    private void Awake()
+    private void Start()
     {
-        _anim = GetComponent<SpikeAnimation>();
+        _lastTimeDamaged = Time.time;
     }
 
     private void Update()
     {
-        if (_isActive && (Time.time - _lastTimeDamaged >= _damageRate))
+        if (Time.time - _lastTimeDamaged >= _damageRate)
         {
             foreach (GameObject entity in _entitiesInRange)
             {
@@ -44,11 +40,7 @@ public class TrapLogic : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
         {
-            Invoke("StartAnimation", _trapDelay);
             _entitiesInRange.Add(collision.gameObject);
-            _entitiesInRangeCount++;
-            _isActive = true;
-            _lastTimeDamaged = Time.time;
         }
     }
 
@@ -58,20 +50,7 @@ public class TrapLogic : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
         {
             _entitiesInRange.Remove(collision.gameObject);
-            _entitiesInRangeCount--;
-            _isActive = _entitiesInRangeCount <= 0 ? false : true; // Se non escono tutte le entita' dal trigger, lascio la trappola attiva
-            if (!_isActive) Invoke("StopAnimation", _trapDelay);
         }
-    }
-
-    private void StartAnimation()
-    {
-        _anim.SetIsActiveParam(true);
-    }
-
-    private void StopAnimation()
-    {
-        _anim.SetIsActiveParam(false);
     }
 
     private void DamageEntity(GameObject entity)
