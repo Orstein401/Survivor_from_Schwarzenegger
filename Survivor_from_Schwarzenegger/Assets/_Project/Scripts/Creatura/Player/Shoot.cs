@@ -49,10 +49,10 @@ public class Shoot : MonoBehaviour
 
     public void Spawn(GameObject player, BulletHero bullet, float lifespan)
     {
-      
+        Vector2 shootRight = new Vector2(1, 0);
         BulletHero bulletHeroPrefab = Instantiate(bullet);   //Istanzio il prefab quindi creo una copia del bullet nella scena
         bulletHeroPrefab.transform.position = player.transform.position; //La posizione Iniziale dell'oggetto è il punto in cui è presente il player
-        bulletHeroPrefab.MovementBullet(player.transform); //Richiamo la funzione movimento per spostarlo
+        bulletHeroPrefab.MovementBullet(shootRight); //Richiamo la funzione movimento per spostarlo
         Destroy(bulletHeroPrefab.gameObject, lifespan);
 
     }

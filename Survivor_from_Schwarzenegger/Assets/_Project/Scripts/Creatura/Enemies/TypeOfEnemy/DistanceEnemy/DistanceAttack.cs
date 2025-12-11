@@ -11,7 +11,7 @@ public class DistanceAttack : MonoBehaviour
         direction.Normalize();
         BulletEnemy bullet = Instantiate(bulletPrefab);
         bullet.transform.position = gameObject.transform.position;
-        bullet.SetUp(direction);
+        bullet.SetUpDirecton(direction);
     }
 }
 

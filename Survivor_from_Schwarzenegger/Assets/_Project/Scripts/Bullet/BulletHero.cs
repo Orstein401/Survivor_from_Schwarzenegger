@@ -9,6 +9,8 @@ public class BulletHero : MonoBehaviour
     [SerializeField] private Ammo _nameAmmo = Ammo.Spada;
     [SerializeField] private float _speed;
     private Vector3 _newDirection;
+    private float bulletForce = 3;
+
 
     //Nel fixed update calcolo il movimento del bullet ( movimento + velocità)
     private void Update()
@@ -17,9 +19,34 @@ public class BulletHero : MonoBehaviour
     }
 
 
-    public void MovementBullet(Transform dirPlayer)
+    public void MovementBullet(Vector2 dirPlayer)
     {
-        _newDirection = dirPlayer.position.normalized; //indico la direzione che deve prendere il mio bullet
+        _newDirection = dirPlayer.normalized; //indico la direzione che deve prendere il mio bullet
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+       
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            MoveEnemy enemyPos = collision.gameObject.GetComponent<MoveEnemy>();
+            enemyPos.StartKnockback(_newDirection, bulletForce);
+            Debug.Log(enemy.lifeEnemy.GetHp()+"prima");
+            enemy.lifeEnemy.TakeDamage(_damage);
+            Debug.Log(enemy.lifeEnemy.GetHp()+"dopo aver subito danno");
+
+            if (!enemy.lifeEnemy.IsAlive())
+            {
+                Destroy(collision.gameObject, 2f);
+                Debug.Log("è morto");
+            }
+            else
+            {
+                Debug.Log(enemy.lifeEnemy.GetHp()+"se è ancora vivo");
+            }
+                Destroy(gameObject);
+        }
     }
 
     public BulletHero() { }
