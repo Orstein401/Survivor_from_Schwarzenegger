@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] protected float _speed = 5;
     [SerializeField] protected float _walkingSpeed = 2;
-    [SerializeField] protected Player player; //fatta Serialize per evitare di cercare ogni volta con il  FindAnyObjectByType<Player>();
+    [SerializeField] protected Player player; //fatta Serialize per evitare di cercare ogni volta con il  FindAnyObjectByType<Player>()
     [SerializeField] protected float _range;
 
     protected MoveEnemy typeMove;
@@ -38,18 +38,6 @@ public class Enemy : MonoBehaviour
         IsTrigger.Player = player;
         IsTrigger.range = _range;
     }
-    private void Update()
-    {
-        if (IsTrigger.IsNearPLayer())
-        {
-            typeMove.Speed = _speed;
-
-        }
-        else
-        {
-            typeMove.Speed = _walkingSpeed;
-            typeMove.LogicMove();
-        }
-    }
+   
 
 }

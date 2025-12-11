@@ -8,6 +8,7 @@ public class BulletEnemy : MonoBehaviour
     private Rigidbody2D _rb;
     private Vector2 dir;
     private Vector2 posPlayer;
+    private float bulletForce = 3;
 
     private void Awake()
     {
@@ -21,12 +22,15 @@ public class BulletEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            posPlayer = collision.transform.position;
-            posPlayer += dir;
-            collision.transform.position = posPlayer;
             Destroy(gameObject);
         }
-       
+        Destroy(gameObject, 5f);
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            MoveEnemy enemy = collision.gameObject.GetComponent<MoveEnemy>();
+            enemy.StartKnockback(dir, bulletForce);
+            Destroy(gameObject);
+        }
     }
     private void FixedUpdate()
     {
