@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         _mover.SetPositionPlayer();
-        _shoot.Shooter(_weapon.GetListWeapon(), _bulletHero);
+     //   _shoot.Shooter(_weapon.GetListWeapon(), _bulletHero);
     }
 
     private void FixedUpdate()
