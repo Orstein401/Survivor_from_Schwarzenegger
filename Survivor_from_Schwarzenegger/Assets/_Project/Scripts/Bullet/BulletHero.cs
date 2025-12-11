@@ -13,6 +13,8 @@ public class BulletHero : MonoBehaviour
     //Nel fixed update calcolo il movimento del bullet ( movimento + velocità)
     private void Update()
     {
+
+
         transform.position = transform.position + _newDirection * _speed * Time.deltaTime;
     }
 
@@ -20,6 +22,8 @@ public class BulletHero : MonoBehaviour
     public void MovementBullet(Transform dirPlayer)
     {
         _newDirection = dirPlayer.position.normalized; //indico la direzione che deve prendere il mio bullet
+        
+   
     }
 
     public BulletHero() { }
