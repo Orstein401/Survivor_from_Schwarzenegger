@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 public class Player : MonoBehaviour
 {
     [SerializeField] private int _hp;
-    [SerializeField] private Stats _baseStats;
+    [SerializeField] public Stats _baseStats;
     [SerializeField] BulletHero[] _bulletHero;
     [SerializeField] private List<Weapon> _firstWeapon;
     private List<Weapon> _listWeapon;
