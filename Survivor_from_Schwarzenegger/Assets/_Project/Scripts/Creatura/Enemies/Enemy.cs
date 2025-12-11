@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
     protected MoveEnemy typeMove;
     protected TriggerRange IsTrigger;
     public LifeController lifeEnemy;
+    [SerializeField] DropAmmo bulletDrop;
+
 
     protected virtual void Awake()
     {
@@ -25,13 +27,13 @@ public class Enemy : MonoBehaviour
         {
             lifeEnemy = gameObject.AddComponent<LifeController>();
         }
-        if(typeMove == null)
+        if (typeMove == null)
         {
             typeMove = gameObject.AddComponent<MoveEnemy>();
         }
-        if(IsTrigger == null)
+        if (IsTrigger == null)
         {
-            IsTrigger= gameObject.AddComponent<TriggerRange>();
+            IsTrigger = gameObject.AddComponent<TriggerRange>();
         }
         if (player == null)
         {
@@ -47,6 +49,11 @@ public class Enemy : MonoBehaviour
 
         lifeEnemy.SetHp(_hp);
     }
-   
+
+    public void Drop()
+    {
+       DropAmmo bullet = Instantiate(bulletDrop);
+        bullet.transform.position = gameObject.transform.position;
+    }
 
 }

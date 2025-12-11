@@ -38,6 +38,7 @@ public class BulletHero : MonoBehaviour
 
             if (!enemy.lifeEnemy.IsAlive())
             {
+                enemy.Drop();
                 Destroy(collision.gameObject, 2f);
                 Debug.Log("è morto");
             }
