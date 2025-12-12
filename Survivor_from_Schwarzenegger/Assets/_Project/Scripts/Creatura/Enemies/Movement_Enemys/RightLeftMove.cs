@@ -10,7 +10,7 @@ public class RightLeftMove : MoveEnemy
     protected override void Awake()
     {
         base.Awake();
-
+        SetUpPattern();
     }
 
     public override void SetUpPattern()
