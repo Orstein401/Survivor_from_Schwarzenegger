@@ -3,13 +3,6 @@ using UnityEngine;
 
 public class RotatingBladesLogic : MonoBehaviour
 {
-    /*
-    TO DO:
-    [DONE] IMPLEMENTARE LA FUNZIONE PER TRASFERIRE I DANNI ALL'OGGETTO IN COLLISIONE (PLAYER O ENEMY)
-    [DONE IVAN] CREARE UN PREFAB PER LE TRAPPOLE O DEI TILE CON GLI ASSET A DISPOSIZIONE (DA SEGUIRE CON IVAN)
-    - CREARE AUDIO (DA SEGUIRE CON CHI SI OCCUPA DELL'AUDIO)
-    - TESTARE CON PIU' ENEMY NEL TRIGGER E VEDERE CHE SUCCEDE
-     */
 
     [SerializeField] private int _damage = 20;
     [SerializeField] private float _damageRate = 1f;
@@ -62,8 +55,8 @@ public class RotatingBladesLogic : MonoBehaviour
 
     private void Knockback(GameObject entity)
     {
-        Vector3 direction = new Vector3(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f), entity.transform.position.z);
-        Rigidbody2D rb = entity.GetComponent<Rigidbody2D>();
+        Vector2 distance = entity.transform.position - transform.position;
+        Vector3 direction = new Vector3(distance.x, distance.y);
         entity.transform.position = entity.transform.position + direction * _knockbackForce;
     }
 }

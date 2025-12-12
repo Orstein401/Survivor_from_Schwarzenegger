@@ -226,6 +226,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: trap_animation_56
       objectReference: {fileID: 0}
+    - target: {fileID: 7270053307993663705, guid: 00f311376a0272b438cd27f95ae858e4, type: 3}
+      propertyPath: _knockbackForce
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 7418736753649005830, guid: 00f311376a0272b438cd27f95ae858e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.08
