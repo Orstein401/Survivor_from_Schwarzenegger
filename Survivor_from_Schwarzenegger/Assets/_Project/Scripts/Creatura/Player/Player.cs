@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     Shoot _shoot = new Shoot();
     Rigidbody2D _rb;
     LifeController LifeHero = new LifeController();
+    Camera _camera;
     // Start is called before the first frame update
 
     private void Awake()
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
         LifeHero.SetHp(_hp);
         Weapon.SetWeapon(_firstWeapon[0]);
         _listWeapon = Weapon.GetListWeapon();
+        _camera = Camera.main;
     }
     void Start()
     {
@@ -34,9 +36,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         _listWeapon = Weapon.GetListWeapon();
         _mover.SetPositionPlayer();
-        _shoot.Shooter(_listWeapon, _bulletHero, gameObject, _mover.GetPositionPlayer());
+        _shoot.Shooter(_listWeapon, _bulletHero, gameObject, _mover.GetPositionPlayer(), _camera);
     }
 
     private void FixedUpdate()
