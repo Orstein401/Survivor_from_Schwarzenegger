@@ -44,3 +44,48 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: GreenGround
+    uniqueID: 1170822847
+    locked: 0
+  - name: ObjectGreen
+    uniqueID: 1877738979
+    locked: 0
+  - name: SoilGround
+    uniqueID: 2864389121
+    locked: 0
+  - name: ObjectSoil
+    uniqueID: 4122682115
+    locked: 0
+  - name: Road
+    uniqueID: 612389373
+    locked: 0
+  - name: Borders
+    uniqueID: 4260111863
+    locked: 0
+  - name: Piastre
+    uniqueID: 2292892093
+    locked: 0
+  - name: ObjectBehind
+    uniqueID: 147250059
+    locked: 0
+  - name: Objects
+    uniqueID: 2689235541
+    locked: 0
+  - name: BackTreeToDestroy
+    uniqueID: 169437511
+    locked: 0
+  - name: Unit
+    uniqueID: 927842261
+    locked: 0
+  - name: FrontTreeToDestroy1
+    uniqueID: 3030947603
+    locked: 0
+  - name: FrontTreeToDestroy2
+    uniqueID: 2508022219
+    locked: 0
+  - name: Overlay
+    uniqueID: 2148421979
+    locked: 0
+  - name: Fog
+    uniqueID: 3477181367
+    locked: 0

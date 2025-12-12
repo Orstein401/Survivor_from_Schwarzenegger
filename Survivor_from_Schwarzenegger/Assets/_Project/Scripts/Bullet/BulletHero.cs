@@ -10,31 +10,38 @@ public class BulletHero : MonoBehaviour
     [SerializeField] private float _speed;
     private Vector3 _newDirection;
     private float bulletForce = 3;
+    private Rigidbody2D _rb;
 
 
-    //Nel fixed update calcolo il movimento del bullet ( movimento + velocità)
-    private void Update()
+    private void Awake()
     {
-        transform.position = transform.position + _newDirection * _speed * Time.deltaTime;
+        _rb = GetComponent<Rigidbody2D>();
     }
+    //Nel fixed update calcolo il movimento del bullet ( movimento + velocità)
+    //private void Update()
+    //{
+    //    transform.position = transform.position + _newDirection * _speed * Time.deltaTime;
+    //}
 
 
     public void MovementBullet(Vector2 dirPlayer)
     {
+
         _newDirection = dirPlayer.normalized; //indico la direzione che deve prendere il mio bullet
+        _rb.velocity = _newDirection * _speed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             MoveEnemy enemyPos = collision.gameObject.GetComponent<MoveEnemy>();
-            enemyPos.StartKnockback(_newDirection, bulletForce);
-            Debug.Log(enemy.lifeEnemy.GetHp()+"prima");
+            enemy.knockBack.StartKnockback(_newDirection, bulletForce);
+            Debug.Log("vita prima"+enemy.lifeEnemy.GetHp());
             enemy.lifeEnemy.TakeDamage(_damage);
-            Debug.Log(enemy.lifeEnemy.GetHp()+"dopo aver subito danno");
+            Debug.Log("vita dopo" + enemy.lifeEnemy.GetHp());
 
             if (!enemy.lifeEnemy.IsAlive())
             {
@@ -44,9 +51,13 @@ public class BulletHero : MonoBehaviour
             }
             else
             {
-                Debug.Log(enemy.lifeEnemy.GetHp()+"se è ancora vivo");
+                Debug.Log(enemy.lifeEnemy.GetHp() + "se è ancora vivo");
             }
-                Destroy(gameObject);
+            Destroy(gameObject);
+        }
+        else if(collision.gameObject.CompareTag("Player"))
+        {
+            //Raffaele te lo ammolo a te
         }
     }
 
