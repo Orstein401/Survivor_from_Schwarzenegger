@@ -22,6 +22,8 @@ public class Shoot : MonoBehaviour
 
     public void Shooter(List<Weapon> weapon, BulletHero[] bullet, GameObject player, Vector2 directionPlayer, Camera camera)
     {
+        //Ricerco la corrisponenza mediante nameammo tra il bullet da istanziare e l'arma
+        //Se la trovo , verifico se posso sparare, in tal caso richiamo la funzione Spawn
         Debug.Log("Numero di Armi" + weapon.Count);
         for (int i = 0; i < weapon.Count; i++)
         {
@@ -52,6 +54,13 @@ public class Shoot : MonoBehaviour
     public void Spawn(GameObject player, BulletHero bullet, float lifespan, Vector2 directionPlayer, Camera camera)
     {
         Vector2 newDirection = new Vector2();
+        //In base ai bullet definiti a priori i bullet saranno spawnati con determinate caratteristiche
+        // Shotgun viene sparato in base al punto sullo schermo del mouse
+        // Spada: avanti ed indietro
+        // Laser: destra e sinistra
+        // DannyDeVito 3 colpi che puntano su , in digonale a sx, in diagonale a dx
+        // Gatling un colpo in senso orario
+        // Libri: in altro a dx e poi va giu , mediante la forza di gravità
         switch (bullet.GetNameAmmo())
         {
             case Ammo.Shotgun:
