@@ -149,5 +149,5 @@ MonoBehaviour:
     _shd: 0
     _spd: 5
     _hp: 0
-  _rateOfFire: 0.01
+  _rateOfFire: 0.05
   _lifespan: 5
