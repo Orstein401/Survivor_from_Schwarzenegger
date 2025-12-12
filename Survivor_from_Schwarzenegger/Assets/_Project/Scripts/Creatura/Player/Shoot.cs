@@ -54,7 +54,7 @@ public class Shoot : MonoBehaviour
         Vector3 newPositionBulletStart = new Vector3(player.transform.position.x + directionPlayer.x , 
                                                      player.transform.position.y + directionPlayer.y,
                                                      0);
-        bulletHeroPrefab.transform.position = newPositionBulletStart; //La posizione Iniziale dell'oggetto è il punto in cui è presente il player
+        bulletHeroPrefab.transform.position = player.transform.position; //La posizione Iniziale dell'oggetto è il punto in cui è presente il player
         bulletHeroPrefab.MovementBullet(directionPlayer); //Richiamo la funzione movimento per spostarlo
         Destroy(bulletHeroPrefab.gameObject, lifespan);
 
