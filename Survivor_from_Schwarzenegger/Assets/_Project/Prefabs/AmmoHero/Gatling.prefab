@@ -147,7 +147,7 @@ MonoBehaviour:
   _bonusStats:
     _atk: 0
     _shd: 0
-    _spd: 0
+    _spd: 5
     _hp: 0
   _rateOfFire: 0.01
-  _lifespan: 2
+  _lifespan: 5

@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.VFX;
 
 public class Shoot : MonoBehaviour
 {
+    private float gradi = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,7 @@ public class Shoot : MonoBehaviour
 
     }
 
-    public void Shooter(List<Weapon> weapon, BulletHero[] bullet, GameObject player, Vector2 directionPlayer)
+    public void Shooter(List<Weapon> weapon, BulletHero[] bullet, GameObject player, Vector2 directionPlayer, Camera camera)
     {
         Debug.Log("Numero di Armi" + weapon.Count);
         for (int i = 0; i < weapon.Count; i++)
@@ -34,7 +36,7 @@ public class Shoot : MonoBehaviour
                     if (weapon[i].CanIShoot() == true)
                     {
                         Debug.Log("Spara" + weapon[i].GetNameAmmo());
-                        Spawn(player, bullet[j], weapon[i].GetLifeSpan(), directionPlayer);
+                        Spawn(player, bullet[j], weapon[i].GetLifeSpan(), directionPlayer, camera);
 
                     }
                 }
@@ -47,16 +49,69 @@ public class Shoot : MonoBehaviour
 
     }
 
-    public void Spawn(GameObject player, BulletHero bullet, float lifespan, Vector2 directionPlayer)
+    public void Spawn(GameObject player, BulletHero bullet, float lifespan, Vector2 directionPlayer, Camera camera)
     {
+        Vector2 newDirection = new Vector2();
+        switch (bullet.GetNameAmmo())
+        {
+            case Ammo.Shotgun:
+                // Bullet che spara partendo dove sta il player fino a dove sta il mouse
+                Vector3 mouseScreenPosition = Input.mousePosition; //Posizione del mouse sullo schermo ( ex 800 X 600 )
+                mouseScreenPosition.z = -camera.transform.position.z; //distanza asse Z
+                Vector3 mouseWorldPosition = camera.ScreenToWorldPoint(mouseScreenPosition);//Vettore Posizione del mouse
+                Vector3 toPosition = mouseWorldPosition - player.transform.position; //Vettore che va dal Player alla posizione del mouse
+                newDirection.x = toPosition.x; newDirection.y = toPosition.y; //Passo il vettore che va dal player alla posizione del mouse alla 
+                MenageSpawning(player, bullet, lifespan, newDirection);
 
+                break;
+            case Ammo.Spada:
+                newDirection.y = 1;
+                MenageSpawning(player, bullet, lifespan, newDirection);
+                newDirection.y = -1;
+                MenageSpawning(player, bullet, lifespan, newDirection);
+                break;
+            case Ammo.Laser:
+                newDirection.x = 1;
+                MenageSpawning(player, bullet, lifespan, newDirection);
+                newDirection.x = -1;
+                MenageSpawning(player, bullet, lifespan, newDirection);
+                break;
+            case Ammo.DannyDeVito:
+                newDirection.x = 0; newDirection.y = 1;
+                MenageSpawning(player, bullet, lifespan, newDirection);
+                newDirection.x = 1; newDirection.y = 1;
+                MenageSpawning(player, bullet, lifespan, newDirection);
+                newDirection.x = -1; newDirection.y = 1;
+                MenageSpawning(player, bullet, lifespan, newDirection);
+                break;
+            case Ammo.Gatling:
+                //Gestione proiettili in senso orario
+                if (gradi == -360) gradi = 0;
+                //Conversione in radianti
+                float radiant = gradi * Mathf.Deg2Rad;
+                newDirection.x = (Mathf.Cos(radiant));
+                newDirection.y = (Mathf.Sin(radiant));
+                Debug.Log("Vettore Gatling " + newDirection);
+                MenageSpawning(player, bullet, lifespan, newDirection);
+                gradi--;
+                break;
+            case Ammo.Libri:
+                newDirection.x = 1; newDirection.y = 1;
+                MenageSpawning(player, bullet, lifespan, newDirection);
+                break;
+            default:
+                break;
+        }
+
+
+    }
+
+    public void MenageSpawning(GameObject player, BulletHero bullet, float lifespan, Vector2 directionPlayer)
+    {
         BulletHero bulletHeroPrefab = Instantiate(bullet);   //Istanzio il prefab quindi creo una copia del bullet nella scena
-        Vector3 newPositionBulletStart = new Vector3(player.transform.position.x + directionPlayer.x , 
-                                                     player.transform.position.y + directionPlayer.y,
-                                                     0);
         bulletHeroPrefab.transform.position = player.transform.position; //La posizione Iniziale dell'oggetto è il punto in cui è presente il player
         bulletHeroPrefab.MovementBullet(directionPlayer); //Richiamo la funzione movimento per spostarlo
         Destroy(bulletHeroPrefab.gameObject, lifespan);
-
     }
+
 }

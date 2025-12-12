@@ -27,8 +27,8 @@ public class BulletHero : MonoBehaviour
     public void MovementBullet(Vector2 dirPlayer)
     {
 
-        _newDirection = dirPlayer.normalized; //indico la direzione che deve prendere il mio bullet
-        _rb.velocity = _newDirection * _speed;
+        _newDirection = dirPlayer.normalized; //definisco la nuova direzione normalizzata
+        _rb.velocity = _newDirection * _speed; // il bullet avrà la direzione normalizzata del player con la velocità _speed
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
