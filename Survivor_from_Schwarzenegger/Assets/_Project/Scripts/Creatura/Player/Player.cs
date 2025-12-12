@@ -51,15 +51,4 @@ public class Player : MonoBehaviour
 
         _mover.Movement(_rb, _baseStats._spd);
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy") ||
-            collision.gameObject.CompareTag("Enemy Bullet"))
-        {
-            // Gestone take damege da definire.
-        }
-
-
-    }
 }

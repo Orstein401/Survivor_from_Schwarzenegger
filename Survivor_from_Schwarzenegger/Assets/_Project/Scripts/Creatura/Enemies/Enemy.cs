@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] DropAmmo bulletDrop;
 
+    ManagerEnemy enemyManager;
 
     protected virtual void Awake()
     {
@@ -26,6 +27,10 @@ public class Enemy : MonoBehaviour
         typeMove = GetComponent<MoveEnemy>();
         lifeEnemy = GetComponent<LifeController>();
         IsTrigger = GetComponent<TriggerRange>();
+
+        enemyManager= FindAnyObjectByType<ManagerEnemy>();
+        enemyManager.AddEnemy(this);
+
         if (knockBack == null)
         {
             knockBack = gameObject.AddComponent<KnockBack>();
@@ -46,6 +51,7 @@ public class Enemy : MonoBehaviour
         {
             player = FindAnyObjectByType<Player>(); // è sempre presente in caso non dovesse essere messo niente nel serializeFIeld
         }
+
     }
 
     protected virtual void Start()
@@ -61,6 +67,13 @@ public class Enemy : MonoBehaviour
     {
         DropAmmo bullet = Instantiate(bulletDrop);
         bullet.transform.position = gameObject.transform.position;
+    }
+
+    public void Die()
+    {
+        enemyManager.RemoveEnemy(this);
+        GetComponent<Collider2D>().enabled=false;
+        Destroy(this,5f);
     }
 
 
