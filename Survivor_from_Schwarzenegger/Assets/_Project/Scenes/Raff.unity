@@ -786,6 +786,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6282439180174949412, guid: cd8efeca7e895854d9a3250be885309a, type: 3}
+      propertyPath: _rateOfFire
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6755501646380036878, guid: cd8efeca7e895854d9a3250be885309a, type: 3}
       propertyPath: m_Name
       value: Gatling

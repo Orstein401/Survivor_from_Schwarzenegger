@@ -98,8 +98,8 @@ public class Shoot : MonoBehaviour
                 if (gradi == -360) gradi = 0;
                 //Conversione in radianti
                 float radiant = gradi * Mathf.Deg2Rad;
-                newDirection.x = (Mathf.Cos(radiant));
-                newDirection.y = (Mathf.Sin(radiant));
+                newDirection.x = (Mathf.Cos(radiant)) ;
+                newDirection.y = (Mathf.Sin(radiant)) ;
                 Debug.Log("Vettore Gatling " + newDirection);
                 MenageSpawning(player, bullet, lifespan, newDirection);
                 gradi--;
