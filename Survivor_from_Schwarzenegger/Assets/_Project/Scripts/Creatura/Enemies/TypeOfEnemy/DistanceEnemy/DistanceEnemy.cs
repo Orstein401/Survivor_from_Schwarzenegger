@@ -27,20 +27,27 @@ public class DistanceEnemy : Enemy
     void Update()
     {
 
-        if (typeMove.IsKnocked)
+        if (knockBack.IsKnocked)
         {
-            transform.position = Vector2.MoveTowards(transform.position, typeMove.knockTarget, typeMove.knockSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, knockBack.knockTarget, knockBack.knockSpeed * Time.deltaTime);
         }
         else
         {
-            if (IsTrigger.IsNearPLayer())
+            if (player != null)
             {
-                if (Time.time - lastTimeShoot > fireRate)
+                if (IsTrigger.IsNearPLayer())
                 {
-                    lastTimeShoot = Time.time;
-                    Attack.ShootAtPlayer(player.transform);
+                    if (Time.time - lastTimeShoot > fireRate)
+                    {
+                        lastTimeShoot = Time.time;
+                        Attack.ShootAtPlayer(player.transform);
+                    }
+                    else
+                    {
+                        typeMove.Speed = _walkingSpeed;
+                        typeMove.LogicMove();
+                    }
                 }
-
             }
             else
             {
@@ -48,9 +55,9 @@ public class DistanceEnemy : Enemy
                 typeMove.LogicMove();
             }
         }
-        if (Vector2.Distance(transform.position, typeMove.knockTarget) < 0.05f)
+        if (Vector2.Distance(transform.position, knockBack.knockTarget) < 0.05f)
         {
-            typeMove.IsKnocked = false;
+            knockBack.IsKnocked = false;
         }
     }
 }
