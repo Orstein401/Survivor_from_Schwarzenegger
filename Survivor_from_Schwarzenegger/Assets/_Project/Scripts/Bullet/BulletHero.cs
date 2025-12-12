@@ -33,7 +33,7 @@ public class BulletHero : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("ha colliso");
+       
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();

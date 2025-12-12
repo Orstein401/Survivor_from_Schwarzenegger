@@ -6,8 +6,8 @@ public abstract class MoveEnemy : MonoBehaviour
 {
     protected float _speed;
     protected Player _player;
-    [SerializeField] protected float LenghtPattern; 
-    
+    [SerializeField] protected float LenghtPattern;
+
 
     protected Vector2 StartPosition; //mi da la posizione iniziale dove è posizionato L'enemy
     [SerializeField] protected bool ThereIsPLayer;
@@ -30,10 +30,10 @@ public abstract class MoveEnemy : MonoBehaviour
         get { return _speed; }
         set { _speed = value; }
     }
-  
+
     protected virtual void Awake()
     {
-        StartPosition = transform.position;
+
         if (_player == null)
         {
             _player = FindAnyObjectByType<Player>(); // è sempre presente in caso non dovesse essere messo niente nel serializeFIeld
@@ -44,9 +44,12 @@ public abstract class MoveEnemy : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, _player.transform.position, Speed * Time.deltaTime);
     }
-    public virtual void LogicMove() {}
+    public virtual void LogicMove() { }
 
-    public virtual void SetUpPattern() {}
+    public virtual void SetUpPattern()
+    {
+        StartPosition = transform.position;
+    }
 
 }
 

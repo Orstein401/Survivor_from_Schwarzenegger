@@ -5,7 +5,12 @@ using UnityEngine;
 public class ManagerEnemy : MonoBehaviour
 {
     public List<Enemy> enemies;
-
+    public static int _limitGlobalEnemy;
+    [SerializeField] private int _limitEnemy;
+    private void Awake()
+    {
+        _limitGlobalEnemy = _limitEnemy;
+    }
     public void AddEnemy(Enemy enemy)
     {
         enemies.Add(enemy);
@@ -16,7 +21,7 @@ public class ManagerEnemy : MonoBehaviour
         enemies.Remove(enemy);
     }
 
-    private void Start()
+    private void Update()
     {
         Debug.Log(enemies.Count);
     }
