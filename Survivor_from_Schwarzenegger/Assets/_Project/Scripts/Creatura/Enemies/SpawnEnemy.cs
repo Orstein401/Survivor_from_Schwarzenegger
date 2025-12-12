@@ -58,7 +58,7 @@ public class SpawnEnemy : MonoBehaviour
     {
         if (scemo.IsNearPLayer())
         {
-            if ()
+            if (1==limitEnemy)
             {
 
                 if (Time.time - lastTimeSpawn > rateOfSpawn)
