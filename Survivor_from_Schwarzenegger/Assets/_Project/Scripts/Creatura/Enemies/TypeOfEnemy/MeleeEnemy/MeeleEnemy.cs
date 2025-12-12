@@ -13,11 +13,20 @@ public class MeeleEnemy : Enemy
         }
         else
         {
-            if (IsTrigger.IsNearPLayer())
+            if (player != null)
             {
-                typeMove.Speed = stats._spd;
-                typeMove.ChasePlayer();
 
+                if (IsTrigger.IsNearPLayer())
+                {
+                    typeMove.Speed = stats._spd;
+                    typeMove.ChasePlayer();
+
+                }
+                else
+                {
+                    typeMove.Speed = _walkingSpeed;
+                    typeMove.LogicMove();
+                }
             }
             else
             {
