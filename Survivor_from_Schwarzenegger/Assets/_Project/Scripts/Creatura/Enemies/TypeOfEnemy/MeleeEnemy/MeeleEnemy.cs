@@ -7,9 +7,9 @@ public class MeeleEnemy : Enemy
     void Update()
     {
 
-        if (typeMove.IsKnocked)
+        if (knockBack.IsKnocked)
         {
-            transform.position = Vector2.MoveTowards(transform.position, typeMove.knockTarget, typeMove.knockSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, knockBack.knockTarget, knockBack.knockSpeed * Time.deltaTime);
         }
         else
         {
@@ -25,9 +25,9 @@ public class MeeleEnemy : Enemy
                 typeMove.LogicMove();
             }
         }
-        if (Vector2.Distance(transform.position, typeMove.knockTarget) < 0.05f)
+        if (Vector2.Distance(transform.position, knockBack.knockTarget) < 0.05f)
         {
-            typeMove.IsKnocked = false;
+            knockBack.IsKnocked = false;
         }
     }
 }

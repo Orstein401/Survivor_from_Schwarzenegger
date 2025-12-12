@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 464891717}
   - component: {fileID: 464891716}
   - component: {fileID: 464891720}
+  - component: {fileID: 464891721}
   m_Layer: 0
   m_Name: meele
   m_TagString: Enemy
@@ -305,9 +306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 733e416669851db488a1dfd8476ce9bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LenghtPattern: 0
   ThereIsPLayer: 0
-  knockSpeed: 0
-  knockTarget: {x: 0, y: 0}
 --- !u!114 &464891717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,11 +324,12 @@ MonoBehaviour:
     _atk: 0
     _shd: 0
     _spd: 4
-  _hp: 100
+    _hp: 10000
   _walkingSpeed: 2
   player: {fileID: 0}
   _range: 10
   lifeEnemy: {fileID: 0}
+  knockBack: {fileID: 0}
   bulletDrop: {fileID: 0}
 --- !u!212 &464891718
 SpriteRenderer:
@@ -442,6 +443,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &464891721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464891715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00c6e6429e79abc44b16234214e05e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockSpeed: 0
+  knockTarget: {x: 0, y: 0}
 --- !u!1 &1625288541
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,6 +470,7 @@ GameObject:
   - component: {fileID: 1625288542}
   - component: {fileID: 1625288545}
   - component: {fileID: 1625288546}
+  - component: {fileID: 1625288547}
   m_Layer: 6
   m_Name: Distance
   m_TagString: Enemy
@@ -477,13 +493,14 @@ MonoBehaviour:
   stats:
     _atk: 0
     _shd: 0
-    _spd: 0
-  _hp: 100
+    _spd: 3
+    _hp: 3
   _walkingSpeed: 2
   player: {fileID: 1783967478}
-  _range: 10
+  _range: 0
   lifeEnemy: {fileID: 0}
-  bulletDrop: {fileID: 0}
+  knockBack: {fileID: 0}
+  bulletDrop: {fileID: 6282439180174949412, guid: bdda7ad66284bda46be1a929715574cc, type: 3}
   _bulletPrefab: {fileID: 7366630420379725352, guid: adeb4dd9df4d4b04aa81fdee7a799f32, type: 3}
   fireRate: 1
 --- !u!212 &1625288543
@@ -565,9 +582,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c71740a9692b1e45ae952f369e1af31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LenghtPattern: 3
   ThereIsPLayer: 0
-  knockSpeed: 0
-  knockTarget: {x: 0, y: 0}
 --- !u!61 &1625288546
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -613,6 +629,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1625288547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625288541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00c6e6429e79abc44b16234214e05e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockSpeed: 0
+  knockTarget: {x: 0, y: 0}
 --- !u!1 &1783967477
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,6 +681,7 @@ MonoBehaviour:
     _atk: 0
     _shd: 0
     _spd: 5
+    _hp: 0
   _bulletHero:
   - {fileID: 7226310009117210008, guid: 633271173a62ddb439afa413fee3745a, type: 3}
   - {fileID: 7226310009117210008, guid: 178bc4b9e2097af42a83c9b10da204b9, type: 3}
@@ -664,6 +695,7 @@ MonoBehaviour:
       _atk: 0
       _shd: 0
       _spd: 0
+      _hp: 0
     _rateOfFire: 2
     _lifespan: 5
 --- !u!212 &1783967479

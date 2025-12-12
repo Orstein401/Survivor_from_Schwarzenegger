@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -7,7 +8,6 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] protected Stats stats;
-    [SerializeField] protected int _hp;
     [SerializeField] protected float _walkingSpeed = 2;
     [SerializeField] protected Player player; //fatta Serialize per evitare di cercare ogni volta con il  FindAnyObjectByType<Player>()
     [SerializeField] protected float _range;
@@ -15,14 +15,21 @@ public class Enemy : MonoBehaviour
     protected MoveEnemy typeMove;
     protected TriggerRange IsTrigger;
     public LifeController lifeEnemy;
+    public KnockBack knockBack;
+
     [SerializeField] DropAmmo bulletDrop;
 
 
     protected virtual void Awake()
     {
+        knockBack = GetComponent<KnockBack>();
         typeMove = GetComponent<MoveEnemy>();
         lifeEnemy = GetComponent<LifeController>();
         IsTrigger = GetComponent<TriggerRange>();
+        if (knockBack == null)
+        {
+            knockBack = gameObject.AddComponent<KnockBack>();
+        }
         if (lifeEnemy == null)
         {
             lifeEnemy = gameObject.AddComponent<LifeController>();
@@ -47,13 +54,32 @@ public class Enemy : MonoBehaviour
         IsTrigger.Player = player;
         IsTrigger.range = _range;
 
-        lifeEnemy.SetHp(_hp);
+        lifeEnemy.SetHp(10000);
     }
 
     public void Drop()
     {
-       DropAmmo bullet = Instantiate(bulletDrop);
+        DropAmmo bullet = Instantiate(bulletDrop);
         bullet.transform.position = gameObject.transform.position;
     }
+
+
+//    scrivo in chat
+//Enemy e = Instantiate(prefab );
+//    e.transform.position = new Vector3(qualcosa );
+//    e.Setup();
+
+//EPICODE
+//epicode.com
+//21:39
+//può essere randomico
+//o può essere sequenziale
+//tipo il primo in (0,0,0)
+//il secondo in (0,-1,0)
+//il terzo in (0,.-2,0)
+//esatto
+//ora vado che così sento gli altri al volo
+
+
 
 }

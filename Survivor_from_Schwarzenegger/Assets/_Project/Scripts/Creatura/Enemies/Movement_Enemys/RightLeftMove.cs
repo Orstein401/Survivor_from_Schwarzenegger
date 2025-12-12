@@ -10,10 +10,14 @@ public class RightLeftMove : MoveEnemy
     protected override void Awake()
     {
         base.Awake();
+
+    }
+
+    public override void SetUpPattern()
+    {
         Waypoints = new Vector2[2];
         Waypoints[0] = StartPosition;
-        Waypoints[1] = StartPosition + Vector2.right*3f;
-
+        Waypoints[1] = StartPosition + Vector2.right * LenghtPattern;
     }
     public override void LogicMove()
     {
