@@ -11,11 +11,11 @@ public class SquareMoveEnemy : MoveEnemy
     protected override void Awake()
     {
         base.Awake();
-        SetUpPattern();
 
     }
     public override void SetUpPattern()
     {
+        base.SetUpPattern();
         //qui creo l'array di waypoint e gli stesso le sue destinazioni
         WayPoints = new Vector2[4];
         WayPoints[0] = StartPosition;

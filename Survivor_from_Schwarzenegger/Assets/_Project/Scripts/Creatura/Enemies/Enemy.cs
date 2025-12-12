@@ -12,13 +12,14 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected Player player; //fatta Serialize per evitare di cercare ogni volta con il  FindAnyObjectByType<Player>()
     [SerializeField] protected float _range;
 
-    protected MoveEnemy typeMove;
+    public MoveEnemy typeMove;
     protected TriggerRange IsTrigger;
     public LifeController lifeEnemy;
     public KnockBack knockBack;
 
     [SerializeField] DropAmmo bulletDrop;
-
+    SpawnEnemy birthPoint;
+    ManagerEnemy enemyManager;
 
     protected virtual void Awake()
     {
@@ -26,6 +27,11 @@ public class Enemy : MonoBehaviour
         typeMove = GetComponent<MoveEnemy>();
         lifeEnemy = GetComponent<LifeController>();
         IsTrigger = GetComponent<TriggerRange>();
+
+
+        enemyManager= FindAnyObjectByType<ManagerEnemy>();
+        enemyManager.AddEnemy(this);
+
         if (knockBack == null)
         {
             knockBack = gameObject.AddComponent<KnockBack>();
@@ -46,6 +52,7 @@ public class Enemy : MonoBehaviour
         {
             player = FindAnyObjectByType<Player>(); // è sempre presente in caso non dovesse essere messo niente nel serializeFIeld
         }
+
     }
 
     protected virtual void Start()
@@ -54,7 +61,7 @@ public class Enemy : MonoBehaviour
         IsTrigger.Player = player;
         IsTrigger.range = _range;
 
-        lifeEnemy.SetHp(10000);
+        lifeEnemy.SetHp(stats._hp);
     }
 
     public void Drop()
@@ -63,23 +70,22 @@ public class Enemy : MonoBehaviour
         bullet.transform.position = gameObject.transform.position;
     }
 
+    public void Die()
+    {
+        enemyManager.RemoveEnemy(this);
+        birthPoint.RemoveEnemy(this);
+        GetComponent<Collider2D>().enabled=false;
+        Destroy(this,5f);
+    }
+    private void OnDestroy()
+    {
+        Die();
+    }
 
-//    scrivo in chat
-//Enemy e = Instantiate(prefab );
-//    e.transform.position = new Vector3(qualcosa );
-//    e.Setup();
-
-//EPICODE
-//epicode.com
-//21:39
-//può essere randomico
-//o può essere sequenziale
-//tipo il primo in (0,0,0)
-//il secondo in (0,-1,0)
-//il terzo in (0,.-2,0)
-//esatto
-//ora vado che così sento gli altri al volo
-
+    public void setUpBirthPoint(SpawnEnemy spawn)
+    {
+        birthPoint = spawn;
+    }
 
 
 }
