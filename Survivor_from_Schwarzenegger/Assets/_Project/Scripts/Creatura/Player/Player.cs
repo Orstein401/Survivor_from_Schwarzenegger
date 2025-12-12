@@ -15,22 +15,28 @@ public class Player : MonoBehaviour
     Mover _mover = new Mover();
     Shoot _shoot = new Shoot();
     Rigidbody2D _rb;
-    LifeController LifeHero = new LifeController();
-    Camera _camera;
+    public LifeController LifeHero;
+   Camera _camera;
     // Start is called before the first frame update
 
     private void Awake()
     {
         //Setting info principali del Player
         _rb = GetComponent<Rigidbody2D>();
-        LifeHero.SetHp(_hp);
+       
         Weapon.SetWeapon(_firstWeapon[0]);
         _listWeapon = Weapon.GetListWeapon();
         _camera = Camera.main;
+          //ora che lifecontroller è un monoBehavior non si può più fare lifehero= new LifeController, ma tocca per forza prendere il componente
+        LifeHero = GetComponent<LifeController>();
+        if (LifeHero == null)
+        {
+            LifeHero = gameObject.AddComponent<LifeController>();
+        }
     }
     void Start()
     {
-
+        LifeHero.SetHp(_baseStats._hp);
     }
 
     // Update is called once per frame

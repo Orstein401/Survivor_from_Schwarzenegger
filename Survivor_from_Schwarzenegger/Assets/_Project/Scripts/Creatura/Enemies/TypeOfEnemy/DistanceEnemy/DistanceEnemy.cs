@@ -33,14 +33,21 @@ public class DistanceEnemy : Enemy
         }
         else
         {
-            if (IsTrigger.IsNearPLayer())
+            if (player != null)
             {
-                if (Time.time - lastTimeShoot > fireRate)
+                if (IsTrigger.IsNearPLayer())
                 {
-                    lastTimeShoot = Time.time;
-                    Attack.ShootAtPlayer(player.transform);
+                    if (Time.time - lastTimeShoot > fireRate)
+                    {
+                        lastTimeShoot = Time.time;
+                        Attack.ShootAtPlayer(player.transform);
+                    }
+                    else
+                    {
+                        typeMove.Speed = _walkingSpeed;
+                        typeMove.LogicMove();
+                    }
                 }
-
             }
             else
             {

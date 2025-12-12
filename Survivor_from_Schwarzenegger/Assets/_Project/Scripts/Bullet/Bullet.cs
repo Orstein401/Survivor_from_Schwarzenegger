@@ -7,6 +7,7 @@ public abstract class Bullet : MonoBehaviour
     [SerializeField] protected float speed;
     [SerializeField] protected float lifeSpan;
     [SerializeField] protected float bulletForce = 3;
+    [SerializeField] protected int _damage;
     protected Rigidbody2D _rb;
     protected Vector2 dir;
    
