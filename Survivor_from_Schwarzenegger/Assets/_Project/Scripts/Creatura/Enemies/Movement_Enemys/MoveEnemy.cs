@@ -5,16 +5,13 @@ using UnityEngine;
 public abstract class MoveEnemy : MonoBehaviour
 {
     protected float _speed;
-    protected Player _player; 
-
+    protected Player _player;
+    [SerializeField] protected float LenghtPattern; 
+    
 
     protected Vector2 StartPosition; //mi da la posizione iniziale dove è posizionato L'enemy
     [SerializeField] protected bool ThereIsPLayer;
 
-    //variabili per gestire la spinta subita dal proiettiele nemico(Player)
-    protected bool isKnocked=false;
-    public float knockSpeed;
-    public Vector2 knockTarget;
     public Player Player
     {
         get { return _player; }
@@ -26,11 +23,7 @@ public abstract class MoveEnemy : MonoBehaviour
         set { ThereIsPLayer = value; }
     }
 
-    public bool IsKnocked
-    {
-        get { return isKnocked; }
-        set { isKnocked = value; }
-    }
+
 
     public float Speed
     {
@@ -51,13 +44,9 @@ public abstract class MoveEnemy : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, _player.transform.position, Speed * Time.deltaTime);
     }
-    public void StartKnockback(Vector2 dir, float force)
-    {
-        knockTarget = (Vector2)transform.position + dir;
-        knockSpeed = force;
-        isKnocked = true;
-    }
-    public abstract void LogicMove();
+    public virtual void LogicMove() {}
+
+    public virtual void SetUpPattern() {}
 
 }
 
