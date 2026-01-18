@@ -5,7 +5,10 @@ using UnityEngine;
 public abstract class MoveEnemy : MonoBehaviour
 {
     protected float _speed;
-    protected Player _player; 
+    protected Player _player;
+    [SerializeField] protected float LenghtPattern; 
+    
+
     protected Vector2 StartPosition; //mi da la posizione iniziale dove è posizionato L'enemy
     [SerializeField] protected bool ThereIsPLayer;
 
@@ -19,6 +22,8 @@ public abstract class MoveEnemy : MonoBehaviour
         get { return ThereIsPLayer; }
         set { ThereIsPLayer = value; }
     }
+
+
 
     public float Speed
     {
@@ -39,6 +44,9 @@ public abstract class MoveEnemy : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, _player.transform.position, Speed * Time.deltaTime);
     }
-    public abstract void LogicMove();
+    public virtual void LogicMove() {}
+
+    public virtual void SetUpPattern() {}
+
 }
 

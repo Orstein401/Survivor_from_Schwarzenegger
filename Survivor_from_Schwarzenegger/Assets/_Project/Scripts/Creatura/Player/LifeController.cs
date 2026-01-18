@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class LifeController
+public class LifeController : MonoBehaviour
 {
     [SerializeField] private int _hp;
     // Start is called before the first frame update

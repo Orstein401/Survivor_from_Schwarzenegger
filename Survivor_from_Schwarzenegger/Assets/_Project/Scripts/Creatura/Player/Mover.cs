@@ -4,8 +4,8 @@ using UnityEngine;
 
 class Mover
 {
-    private Vector2 _positionPlayer;
-
+    public Vector2 _positionPlayer;
+    private Vector2 _lastDirectionValorize;
     //Contructor
     public Mover()
     { }
@@ -22,6 +22,10 @@ class Mover
     {
         _positionPlayer.x = Input.GetAxis("Horizontal");
         _positionPlayer.y = Input.GetAxis("Vertical");
+        if (_positionPlayer.x == 0) _positionPlayer.x = _lastDirectionValorize.x;
+        else _lastDirectionValorize.x = _positionPlayer.x;
+        if (_positionPlayer.y == 0) _positionPlayer.y = _lastDirectionValorize.y;
+        else _lastDirectionValorize.y = _positionPlayer.y;
     }
 
 

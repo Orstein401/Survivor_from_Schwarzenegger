@@ -1,64 +1,85 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float _speed = 5;
-    [SerializeField] private float _walkingSpeed = 2;
-    [SerializeField] private Player player; //fatta Serialize per evitare di cercare ogni volta con il  FindAnyObjectByType<Player>();
-    [SerializeField] private float _range;
+    [SerializeField] protected Stats stats;
+    [SerializeField] protected float _walkingSpeed = 2;
+    [SerializeField] protected Player player; //fatta Serialize per evitare di cercare ogni volta con il  FindAnyObjectByType<Player>()
+    [SerializeField] protected float _range;
 
-    MoveEnemy typeMove;
-    TriggerRange IsTrigger;
+    protected MoveEnemy typeMove;
+    protected TriggerRange IsTrigger;
+    public LifeController lifeEnemy;
+    public KnockBack knockBack;
 
-    private void Awake()
+    [SerializeField] DropAmmo bulletDrop;
+
+
+    protected virtual void Awake()
     {
+        knockBack = GetComponent<KnockBack>();
         typeMove = GetComponent<MoveEnemy>();
+        lifeEnemy = GetComponent<LifeController>();
         IsTrigger = GetComponent<TriggerRange>();
+        if (knockBack == null)
+        {
+            knockBack = gameObject.AddComponent<KnockBack>();
+        }
+        if (lifeEnemy == null)
+        {
+            lifeEnemy = gameObject.AddComponent<LifeController>();
+        }
+        if (typeMove == null)
+        {
+            typeMove = gameObject.AddComponent<MoveEnemy>();
+        }
+        if (IsTrigger == null)
+        {
+            IsTrigger = gameObject.AddComponent<TriggerRange>();
+        }
         if (player == null)
         {
             player = FindAnyObjectByType<Player>(); // è sempre presente in caso non dovesse essere messo niente nel serializeFIeld
         }
     }
 
-    private void Start()
+    protected virtual void Start()
     {
-        if (typeMove != null)
-        {
-            typeMove.Player = player;
-        }
-        else
-        {
-            Debug.Log("ce un problema in type");
-        }
-        if (IsTrigger)
-        {
-            IsTrigger.Player = player;
-            IsTrigger.range = _range;
-        }
-        else
-        {
-            Debug.Log("ce un problema in Itrigger");
-        }
+        typeMove.Player = player;
+        IsTrigger.Player = player;
+        IsTrigger.range = _range;
 
-        //typeMove.Player = player;
-        //IsTrigger.Player = player;
-        //IsTrigger.range = _range;
+        lifeEnemy.SetHp(10000);
     }
-    private void Update()
+
+    public void Drop()
     {
-        if (IsTrigger.IsNearPLayer())
-        {
-            typeMove.Speed = _speed;
-            typeMove.ChasePlayer();
-        }
-        else
-        {
-            typeMove.Speed = _walkingSpeed;
-            typeMove.LogicMove();
-        }
-
+        DropAmmo bullet = Instantiate(bulletDrop);
+        bullet.transform.position = gameObject.transform.position;
     }
+
+
+//    scrivo in chat
+//Enemy e = Instantiate(prefab );
+//    e.transform.position = new Vector3(qualcosa );
+//    e.Setup();
+
+//EPICODE
+//epicode.com
+//21:39
+//può essere randomico
+//o può essere sequenziale
+//tipo il primo in (0,0,0)
+//il secondo in (0,-1,0)
+//il terzo in (0,.-2,0)
+//esatto
+//ora vado che così sento gli altri al volo
+
+
+
 }

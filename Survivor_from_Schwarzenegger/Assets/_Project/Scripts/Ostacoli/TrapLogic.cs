@@ -1,31 +1,35 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TrapLogic : MonoBehaviour
 {
-    /*
-    TO DO:
-    - IMPLEMENTARE LA FUNZIONE PER TRASFERIRE I DANNI ALL'OGGETTO IN COLLISIONE (PLAYER O ENEMY)
-    - CREARE UN PREFAB PER LE TRAPPOLE O DEI TILE CON GLI ASSET A DISPOSIZIONE (DA SEGUIRE CON IVAN)
-    - CREARE L'ANIMAZIONE DI ATTIVAZIONE E DISATTIVAZIONE CON EVENTUALE AUDIO (DA SEGUIRE CON CHI SI OCCUPA DELL'AUDIO)
-    - TESTARE CON PIU' ENEMY NEL TRIGGER E VEDERE CHE SUCCEDE
-     */
 
-    [SerializeField] private bool _isActive;
-    [SerializeField] private int _entitiesInRange;
-    [SerializeField] private int _damage;
+    [SerializeField] private int _damage = 20; // Danno per tick della trappola
+    [SerializeField] private float _damageRate = 1f; // Durata tick di danno della trappola
+    [SerializeField] private float _trapDelay = 1f; // Dopo quanto tempo parte l'animazione della trappola
+    [SerializeField] private float _knockbackForce = 1f; // Forza di knockback della trappola
 
-    private GameObject player;
+    private SpikeAnimation _anim;
+    private bool _isActive;
+    private int _entitiesInRangeCount;
+    private float _lastTimeDamaged;
+    private List<GameObject> _entitiesInRange = new List<GameObject>(); // Lista contenente tutte le entita' nel range della trappola
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        _anim = GetComponent<SpikeAnimation>();
     }
 
     private void Update()
     {
-        if (isActive)
+        // Se la trappola e' attiva, faccio danno a tutte le entita' nella lista
+        if (_isActive && (Time.time - _lastTimeDamaged >= _damageRate))
         {
-            Debug.Log("Trappola attiva");
+            foreach (GameObject entity in _entitiesInRange)
+            {
+                DamageEntity(entity);
+                Knockback(entity);
+            }
         }
     }
 
@@ -34,8 +38,11 @@ public class TrapLogic : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
         {
-            isActive = true;
-            entitiesInRange++;
+            Invoke("StartAnimation", _trapDelay); // Faccio partire l'animazione con il delay
+            _entitiesInRange.Add(collision.gameObject);
+            _entitiesInRangeCount++;
+            _isActive = true;
+            _lastTimeDamaged = Time.time;
         }
     }
 
@@ -44,9 +51,34 @@ public class TrapLogic : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
         {
-            entitiesInRange--;
-            isActive = entitiesInRange <= 0 ? false : true; // Se non escono tutte le entita' dal trigger, lascio la trappola attiva
+            _entitiesInRange.Remove(collision.gameObject);
+            _entitiesInRangeCount--;
+            _isActive = _entitiesInRangeCount <= 0 ? false : true; // Se non escono tutte le entita' dal trigger, lascio la trappola attiva
+            if (!_isActive) Invoke("StopAnimation", _trapDelay); // Fermo l'animazione con delay per evitare di farla andare in loop all'infinito
         }
     }
 
+    private void StartAnimation()
+    {
+        _anim.SetIsActiveParam(true);
+    }
+
+    private void StopAnimation()
+    {
+        _anim.SetIsActiveParam(false);
+    }
+
+    private void DamageEntity(GameObject entity)
+    {
+        LifeController lifeController = entity.GetComponent<LifeController>();
+        lifeController.TakeDamage(_damage);
+        _lastTimeDamaged = Time.time;
+    }
+
+    private void Knockback(GameObject entity)
+    {
+        Vector2 distance = entity.transform.position - transform.position;
+        Vector3 direction = new Vector3(distance.x, distance.y);
+        entity.transform.position = entity.transform.position + direction * _knockbackForce;
+    }
 }
