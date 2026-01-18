@@ -23,6 +23,10 @@ public class ManagerEnemy : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(enemies.Count);
+        if (Input.GetMouseButton(0))
+        {
+            Debug.Log(enemies.Count);
+        }
+        
     }
 }
