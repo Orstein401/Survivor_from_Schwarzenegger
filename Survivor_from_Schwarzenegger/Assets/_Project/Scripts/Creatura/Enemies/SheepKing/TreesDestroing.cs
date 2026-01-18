@@ -1,25 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SheepKing : MonoBehaviour
+public class TreesDestroing : MonoBehaviour
 {
-    [SerializeField] private Grid TreesGrid;
-
+    [SerializeField] private Grid Trees;
     private Animator _anim;
-    
+
     void Awake()
     {
-       TreesGrid = GetComponentInChildren<Grid>();
+        Trees = GetComponentInChildren<Grid>();
         _anim = GetComponentInChildren<Animator>();
     }
 
-    // Update is called once per frame
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            Destroy(TreesGrid.gameObject, 1.5f);
+            Destroy(Trees.gameObject , 1.5f);
             _anim.SetBool("StartToPlay", true);
         }
     }

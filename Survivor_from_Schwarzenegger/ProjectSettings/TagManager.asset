@@ -77,6 +77,12 @@ TagManager:
   - name: Unit
     uniqueID: 927842261
     locked: 0
+  - name: SheepKing
+    uniqueID: 2516024327
+    locked: 0
+  - name: MobSpawner
+    uniqueID: 421081257
+    locked: 0
   - name: FrontTreeToDestroy1
     uniqueID: 3030947603
     locked: 0
