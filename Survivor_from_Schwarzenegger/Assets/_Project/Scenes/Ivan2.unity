@@ -53521,9 +53521,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c71740a9692b1e45ae952f369e1af31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LenghtPattern: 0
   ThereIsPLayer: 0
-  knockSpeed: 0
-  knockTarget: {x: 0, y: 0}
 --- !u!114 &590786396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53541,11 +53540,11 @@ MonoBehaviour:
     _shd: 0
     _spd: 5
     _hp: 0
-  _hp: 100
   _walkingSpeed: 2
   player: {fileID: 926296924}
   _range: 10
   lifeEnemy: {fileID: 0}
+  knockBack: {fileID: 0}
   bulletDrop: {fileID: 6282439180174949412, guid: cd8efeca7e895854d9a3250be885309a, type: 3}
   _bulletPrefab: {fileID: 7366630420379725352, guid: adeb4dd9df4d4b04aa81fdee7a799f32, type: 3}
   fireRate: 2
@@ -55052,6 +55051,7 @@ MonoBehaviour:
       _hp: 0
     _rateOfFire: 2
     _lifespan: 5
+  LifeHero: {fileID: 0}
 --- !u!212 &926296925
 SpriteRenderer:
   m_ObjectHideFlags: 0
