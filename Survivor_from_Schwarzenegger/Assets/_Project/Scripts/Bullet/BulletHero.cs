@@ -39,7 +39,7 @@ public class BulletHero : MonoBehaviour
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             MoveEnemy enemyPos = collision.gameObject.GetComponent<MoveEnemy>();
             enemy.knockBack.StartKnockback(_newDirection, bulletForce);
-            Debug.Log("vita prima"+enemy.lifeEnemy.GetHp());
+            Debug.Log("vita prima" + enemy.lifeEnemy.GetHp());
             enemy.lifeEnemy.TakeDamage(_damage);
             Debug.Log("vita dopo" + enemy.lifeEnemy.GetHp());
 
@@ -55,7 +55,10 @@ public class BulletHero : MonoBehaviour
             }
             Destroy(gameObject);
         }
-     
+        else if (collision.gameObject.CompareTag("Player"))
+        {
+            //Raffaele te lo ammolo a te
+        }
     }
 
     public BulletHero() { }
