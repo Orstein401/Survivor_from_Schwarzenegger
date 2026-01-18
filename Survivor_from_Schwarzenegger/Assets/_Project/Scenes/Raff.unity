@@ -132,11 +132,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4432352512189665149, guid: bdda7ad66284bda46be1a929715574cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.696188
+      value: -5.5333
       objectReference: {fileID: 0}
     - target: {fileID: 4432352512189665149, guid: bdda7ad66284bda46be1a929715574cc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.0490782
+      value: 1.8862
       objectReference: {fileID: 0}
     - target: {fileID: 4432352512189665149, guid: bdda7ad66284bda46be1a929715574cc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -708,6 +708,7 @@ MonoBehaviour:
     _atk: 0
     _shd: 0
     _spd: 5
+    _hp: 0
   _bulletHero:
   - {fileID: 7226310009117210008, guid: 633271173a62ddb439afa413fee3745a, type: 3}
   - {fileID: 7226310009117210008, guid: 9c83ce7da2152a54ea31b8a4ef759752, type: 3}
@@ -721,8 +722,10 @@ MonoBehaviour:
       _atk: 0
       _shd: 0
       _spd: 0
+      _hp: 0
     _rateOfFire: 5
     _lifespan: 2
+  LifeHero: {fileID: 0}
 --- !u!114 &1893432586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -782,6 +785,10 @@ PrefabInstance:
     - target: {fileID: 4432352512189665149, guid: cd8efeca7e895854d9a3250be885309a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282439180174949412, guid: cd8efeca7e895854d9a3250be885309a, type: 3}
+      propertyPath: _rateOfFire
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6755501646380036878, guid: cd8efeca7e895854d9a3250be885309a, type: 3}
       propertyPath: m_Name

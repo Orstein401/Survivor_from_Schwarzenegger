@@ -56,8 +56,8 @@ public class Shoot : MonoBehaviour
         Vector2 newDirection = new Vector2();
         //In base ai bullet definiti a priori i bullet saranno spawnati con determinate caratteristiche
         // Shotgun viene sparato in base al punto sullo schermo del mouse
-        // Spada: avanti ed indietro
-        // Laser: destra e sinistra
+        // Laser: avanti ed indietro
+        // Spada: destra e sinistra
         // DannyDeVito 3 colpi che puntano su , in digonale a sx, in diagonale a dx
         // Gatling un colpo in senso orario
         // Libri: in altro a dx e poi va giu , mediante la forza di gravità
@@ -73,13 +73,13 @@ public class Shoot : MonoBehaviour
                 MenageSpawning(player, bullet, lifespan, newDirection);
 
                 break;
-            case Ammo.Spada:
+            case Ammo.Laser:
                 newDirection.y = 1;
                 MenageSpawning(player, bullet, lifespan, newDirection);
                 newDirection.y = -1;
                 MenageSpawning(player, bullet, lifespan, newDirection);
                 break;
-            case Ammo.Laser:
+            case Ammo.Spada:
                 newDirection.x = 1;
                 MenageSpawning(player, bullet, lifespan, newDirection);
                 newDirection.x = -1;
@@ -98,8 +98,8 @@ public class Shoot : MonoBehaviour
                 if (gradi == -360) gradi = 0;
                 //Conversione in radianti
                 float radiant = gradi * Mathf.Deg2Rad;
-                newDirection.x = (Mathf.Cos(radiant));
-                newDirection.y = (Mathf.Sin(radiant));
+                newDirection.x = (Mathf.Cos(radiant)) ;
+                newDirection.y = (Mathf.Sin(radiant)) ;
                 Debug.Log("Vettore Gatling " + newDirection);
                 MenageSpawning(player, bullet, lifespan, newDirection);
                 gradi--;

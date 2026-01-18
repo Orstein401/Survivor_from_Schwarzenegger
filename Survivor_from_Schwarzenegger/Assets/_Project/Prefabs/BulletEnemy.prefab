@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   lifeSpan: 10
-  bulletForce: 3
+  bulletForce: 10
   _damage: 1
 --- !u!50 &6469882932476230193
 Rigidbody2D:

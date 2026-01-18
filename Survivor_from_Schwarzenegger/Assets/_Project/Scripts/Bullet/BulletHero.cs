@@ -33,7 +33,7 @@ public class BulletHero : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+       
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
@@ -46,7 +46,7 @@ public class BulletHero : MonoBehaviour
             if (!enemy.lifeEnemy.IsAlive())
             {
                 enemy.Drop();
-                Destroy(collision.gameObject, 2f);
+                enemy.Die();
                 Debug.Log("è morto");
             }
             else

@@ -26,6 +26,9 @@ class Mover
         else _lastDirectionValorize.x = _positionPlayer.x;
         if (_positionPlayer.y == 0) _positionPlayer.y = _lastDirectionValorize.y;
         else _lastDirectionValorize.y = _positionPlayer.y;
+
+        //puoi fare _positionPLayer==Vector2.zero per controllare se la direction non sia (0,0)
+        
     }
 
 

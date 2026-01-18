@@ -7,6 +7,7 @@ public class TriggerRange : MonoBehaviour
     public Player Player;
     public float range;
 
+
     public bool IsNearPLayer()
     {
         if (Vector2.Distance(transform.position, Player.transform.position) <= range)

@@ -10,11 +10,12 @@ public class ZigZagMoveEnemy : MoveEnemy
     protected override void Awake()
     {
         base.Awake();
-        SetUpPattern();
+        
     }
 
     public override void SetUpPattern()
     {
+        base.SetUpPattern();
         Waypoints = new Vector2[5];
         Waypoints[0] = StartPosition;
         Waypoints[1] = StartPosition + new Vector2(LenghtPattern, 1f);
