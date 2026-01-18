@@ -43,7 +43,6 @@ public class muoviti : MonoBehaviour
         if (h != 0 || v != 0)
         {
             SetAndNormalize(direction);
-            
         }
 
     }

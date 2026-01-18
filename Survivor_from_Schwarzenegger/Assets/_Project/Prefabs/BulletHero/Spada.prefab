@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7226310009117210008}
   - component: {fileID: 7918202141242134539}
   - component: {fileID: 6807655307651302882}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spada
   m_TagString: Untagged
   m_Icon: {fileID: 0}
