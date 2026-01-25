@@ -55,10 +55,7 @@ public class BulletHero : MonoBehaviour
             }
             Destroy(gameObject);
         }
-        else if (collision.gameObject.CompareTag("Player"))
-        {
-            //Raffaele te lo ammolo a te
-        }
+
     }
 
     public BulletHero() { }
