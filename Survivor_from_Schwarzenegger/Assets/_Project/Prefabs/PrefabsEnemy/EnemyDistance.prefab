@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3685712411776663701}
   - component: {fileID: 7109728852828288046}
   - component: {fileID: 267087374099950726}
-  - component: {fileID: 973683538172518430}
   - component: {fileID: 5543675041860505107}
   - component: {fileID: 2349774572116950107}
+  - component: {fileID: 5422007615926572027}
   m_Layer: 6
   m_Name: EnemyDistance
   m_TagString: Enemy
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 927842261
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -107,26 +107,13 @@ MonoBehaviour:
     _hp: 100
   _walkingSpeed: 2
   player: {fileID: 0}
-  _range: 0
+  _range: 10
+  typeMove: {fileID: 0}
   lifeEnemy: {fileID: 0}
   knockBack: {fileID: 0}
   bulletDrop: {fileID: 6282439180174949412, guid: bdda7ad66284bda46be1a929715574cc, type: 3}
   _bulletPrefab: {fileID: 7366630420379725352, guid: adeb4dd9df4d4b04aa81fdee7a799f32, type: 3}
   fireRate: 2
---- !u!114 &973683538172518430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2742001582940002968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c71740a9692b1e45ae952f369e1af31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LenghtPattern: 4
-  ThereIsPLayer: 0
 --- !u!61 &5543675041860505107
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -186,3 +173,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockSpeed: 0
   knockTarget: {x: 0, y: 0}
+--- !u!114 &5422007615926572027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2742001582940002968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96305cc5da43464995ca8c638bbfcbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LenghtPattern: 3
+  ThereIsPLayer: 0

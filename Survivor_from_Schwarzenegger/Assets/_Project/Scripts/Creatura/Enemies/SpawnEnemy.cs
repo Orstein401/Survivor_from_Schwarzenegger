@@ -8,12 +8,12 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField] List<Enemy> _listPrefabEnemy;
     [SerializeField] int limitEnemy;
     [SerializeField] Player player;
-    [SerializeField] muoviti bimbo;
-    Scemo scemo;
+ 
+
     [SerializeField] float rateOfSpawn;
     float lastTimeSpawn;
 
-    [SerializeField] float banana;
+   
     public int currentNumEnemy;
     TriggerRange range;
 
@@ -25,14 +25,11 @@ public class SpawnEnemy : MonoBehaviour
     {
         enemyManager = FindAnyObjectByType<ManagerEnemy>();
         range = GetComponent<TriggerRange>();
-        scemo = GetComponent<Scemo>();
-        if (scemo == null)
+        if (range == null)
         {
-            scemo= gameObject.AddComponent<Scemo>();    
+            range= gameObject.AddComponent<TriggerRange>();    
         }
-        scemo._Scemo = bimbo;
-        scemo.range = banana;
-        //range.Player= player;
+        range.Player= player;
     }
 
     public void SpawingEnemy()
@@ -56,9 +53,9 @@ public class SpawnEnemy : MonoBehaviour
 
     private void Update()
     {
-        if (scemo.IsNearPLayer())
+        if (range.IsNearPLayer())
         {
-            if (1==limitEnemy)
+            if (currentNumEnemy<=limitEnemy)
             {
 
                 if (Time.time - lastTimeSpawn > rateOfSpawn)

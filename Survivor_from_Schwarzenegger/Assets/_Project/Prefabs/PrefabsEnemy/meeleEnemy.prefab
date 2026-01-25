@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 927842261
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -104,13 +104,14 @@ MonoBehaviour:
     _atk: 0
     _shd: 0
     _spd: 4
-    _hp: 10000
+    _hp: 20
   _walkingSpeed: 2
   player: {fileID: 0}
-  _range: 0
+  _range: 10
+  typeMove: {fileID: 0}
   lifeEnemy: {fileID: 0}
   knockBack: {fileID: 0}
-  bulletDrop: {fileID: 0}
+  bulletDrop: {fileID: 6282439180174949412, guid: 606e0d24f1ed33a40a6208d09bd874b7, type: 3}
 --- !u!114 &2697425149704718606
 MonoBehaviour:
   m_ObjectHideFlags: 0

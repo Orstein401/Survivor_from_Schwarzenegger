@@ -52,7 +52,7 @@ public class DistanceEnemy : Enemy
             else
             {
                 typeMove.Speed = _walkingSpeed;
-                typeMove.LogicMove();
+                //typeMove.LogicMove();
             }
         }
         if (Vector2.Distance(transform.position, knockBack.knockTarget) < 0.05f)
