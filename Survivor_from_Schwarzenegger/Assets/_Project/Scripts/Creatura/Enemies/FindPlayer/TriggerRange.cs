@@ -10,12 +10,15 @@ public class TriggerRange : MonoBehaviour
 
     public bool IsNearPLayer()
     {
-        if (Vector2.Distance(transform.position, Player.transform.position) <= range)
+        if(Player != null)
         {
-            return true;
+            if (Vector2.Distance(transform.position, Player.transform.position) <= range)
+            {
+                return true;
+            }
         }
         return false;
-      
+       
     }
 
 }
