@@ -55585,6 +55585,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1003885972}
   - component: {fileID: 1003885971}
+  - component: {fileID: 1003885973}
   m_Layer: 0
   m_Name: SpawnEnemy (4)
   m_TagString: Untagged
@@ -55627,6 +55628,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1003885973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003885970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 214ebe5e5e178944ab5f3abf4932c2a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 926296924}
+  range: 5
 --- !u!1001 &1005490839
 PrefabInstance:
   m_ObjectHideFlags: 0
